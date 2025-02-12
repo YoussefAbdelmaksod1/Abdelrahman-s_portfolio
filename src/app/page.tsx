@@ -156,7 +156,7 @@ export default function HomePage() {
                   />
                   <Image
                     src="/images/profile.jpg"
-                    alt="Omnia Gamal"
+                    alt="Abdelrahman Younes"
                     fill
                     className="object-cover"
                     priority
