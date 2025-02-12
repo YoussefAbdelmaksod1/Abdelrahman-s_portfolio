@@ -39,46 +39,32 @@ const container = {
 
 const projects = [
   {
-    title: "Water Quality Control System",
-    category: "Backend Development",
-    description: "Developed a digital system to automate water analysis process at drinking water treatment facilities using Node.js and MySQL.",
-    image: "/images/projects/backend.jpg",
-    tags: ["Node.js", "MySQL", "API"],
+    title: "Brand Identity Campaign",
+    category: "Digital Marketing",
+    description: "A comprehensive brand identity campaign for a tech startup, including social media strategy, content creation, and visual design.",
+    image: "/images/projects/content-strategy.jpg",
+    tags: ["Branding", "Social Media", "Content Strategy"],
     stats: [
-      { label: "Performance", value: "+60%" },
-      { label: "Accuracy", value: "99.9%" },
-      { label: "Cost Reduction", value: "40%" }
+      { label: "Engagement", value: "+200%" },
+      { label: "Reach", value: "1M+" },
+      { label: "ROI", value: "350%" }
     ],
     gradient: "from-blue-500 to-cyan-500",
-    icon: CommandLineIcon
+    icon: RocketLaunchIcon
   },
   {
-    title: "Car Classification Model",
-    category: "Machine Learning",
-    description: "Built and deployed machine learning models for classifying car types based on various features using Python and scikit-learn.",
-    image: "/images/projects/ml.jpg",
-    tags: ["Python", "ML", "Data Analysis"],
+    title: "Product Launch Video Series",
+    category: "Video Production",
+    description: "A series of promotional videos for a new product launch, including concept development, filming, and post-production.",
+    image: "/images/projects/video-campaign.jpg",
+    tags: ["Video", "Production", "Editing"],
     stats: [
-      { label: "Accuracy", value: "95%" },
-      { label: "Processing", value: "Real-time" },
-      { label: "Features", value: "50+" }
+      { label: "Views", value: "2M+" },
+      { label: "Conversion", value: "+150%" },
+      { label: "Shares", value: "50K+" }
     ],
     gradient: "from-purple-500 to-pink-500",
-    icon: SparklesIcon
-  },
-  {
-    title: "CS Learning Platform",
-    category: "Education",
-    description: "Developed an interactive learning platform for computer science students with coding exercises and real-time feedback.",
-    image: "/images/projects/education.jpg",
-    tags: ["Education", "Platform", "Interactive"],
-    stats: [
-      { label: "Students", value: "1000+" },
-      { label: "Success Rate", value: "+40%" },
-      { label: "Exercises", value: "200+" }
-    ],
-    gradient: "from-orange-500 to-red-500",
-    icon: AcademicCapIcon
+    icon: VideoCameraIcon
   },
   {
     title: "Corporate Website Redesign",
@@ -93,56 +79,13 @@ const projects = [
     ],
     gradient: "from-orange-500 to-red-500",
     icon: PencilSquareIcon
-  },
-  {
-    title: "Social Media Campaign",
-    category: "Social Media",
-    description: "Strategic social media campaign that increased engagement by 150% and grew the follower base by 200% in three months.",
-    image: "/images/projects/social-campaign.jpg",
-    tags: ["Social Media", "Content Creation", "Analytics"],
-    stats: [
-      { label: "Followers", value: "+200%" },
-      { label: "Engagement", value: "+150%" },
-      { label: "Reach", value: "5M+" }
-    ],
-    gradient: "from-green-500 to-teal-500",
-    icon: MegaphoneIcon
-  },
-  {
-    title: "Event Photography",
-    category: "Photography",
-    description: "Professional photography coverage for a major corporate event, including event documentation and promotional material.",
-    image: "/images/projects/event-photo.jpg",
-    tags: ["Photography", "Events", "Editing"],
-    stats: [
-      { label: "Photos", value: "1000+" },
-      { label: "Usage", value: "Multi-platform" },
-      { label: "Client", value: "Fortune 500" }
-    ],
-    gradient: "from-pink-500 to-rose-500",
-    icon: CameraIcon
-  },
-  {
-    title: "Content Strategy",
-    category: "Strategy",
-    description: "Developed and implemented a comprehensive content strategy that transformed the client's digital presence.",
-    image: "/images/projects/strategy.jpg",
-    tags: ["Strategy", "Planning", "Analytics"],
-    stats: [
-      { label: "Growth", value: "+250%" },
-      { label: "ROI", value: "400%" },
-      { label: "Retention", value: "+80%" }
-    ],
-    gradient: "from-indigo-500 to-violet-500",
-    icon: SparklesIcon
   }
 ]
 
 const categories = [
   'All',
-  'Backend Development',
-  'Machine Learning',
-  'Education',
+  'Digital Marketing',
+  'Video Production',
   'Content Writing',
   'Social Media',
   'Photography',

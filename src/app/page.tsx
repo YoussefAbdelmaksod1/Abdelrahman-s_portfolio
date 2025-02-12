@@ -118,7 +118,7 @@ export default function HomePage() {
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.4 }}
                 >
-                  Passionate computer science instructor and curriculum developer with expertise in machine learning, backend development, and problem-solving. Dedicated to sharing knowledge and empowering the next generation of developers.
+                  Passionate content creator specializing in crafting compelling digital experiences that resonate with audiences and drive meaningful engagement. Dedicated to delivering high-quality content that makes an impact.
                 </motion.p>
                 <motion.div 
                   className="mt-10 flex items-center justify-center gap-x-6 lg:justify-start"
