@@ -143,10 +143,10 @@ export default function AboutPage() {
                   <h2 className="heading-2 mb-6">My Journey</h2>
                   <div className="space-y-6 text-lg text-gray-600 dark:text-gray-300">
                     <p>
-                      As a passionate content creator, I've dedicated my career to crafting compelling digital experiences that resonate with audiences and drive meaningful engagement. My journey began with a deep love for storytelling and has evolved into a comprehensive mastery of digital media.
+                      As a passionate computer science instructor and developer, I've dedicated my career to teaching and building innovative solutions. My journey began with a deep interest in technology and has evolved into a comprehensive mastery of computer science concepts and teaching methodologies.
                     </p>
                     <p>
-                      I specialize in creating content that not only captures attention but also delivers real value. Whether it's through video production, photography, or written content, I focus on creating narratives that leave a lasting impact.
+                      I specialize in making complex programming concepts accessible to students while also working on cutting-edge machine learning projects and robust backend systems. My goal is to empower the next generation of developers with the knowledge and skills they need to succeed.
                     </p>
                   </div>
                 </motion.div>

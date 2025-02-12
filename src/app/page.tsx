@@ -373,17 +373,17 @@ export default function HomePage() {
               {[
                 {
                   title: "Computer Science Education",
-                  description: "Experienced instructor with a passion for teaching programming and computer science concepts to students of all levels.",
+                  description: "Experienced instructor with a passion for teaching programming and computer science concepts",
                   icon: AcademicCapIcon,
                 },
                 {
                   title: "Machine Learning",
-                  description: "Expertise in machine learning algorithms, data preprocessing, and model development for real-world applications.",
+                  description: "Expertise in developing and implementing machine learning solutions",
                   icon: SparklesIcon,
                 },
                 {
                   title: "Backend Development",
-                  description: "Proficient in building robust backend systems using Node.js, PHP, and various databases.",
+                  description: "Building robust and scalable backend systems",
                   icon: CommandLineIcon,
                 },
               ].map((feature, index) => (

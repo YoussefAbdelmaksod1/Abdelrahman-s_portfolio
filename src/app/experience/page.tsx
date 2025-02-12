@@ -35,40 +35,40 @@ const container = {
 const experiences = [
   {
     year: "2023",
-    role: "Senior Content Creator",
-    company: "Digital Media Agency",
-    description: "Led major content campaigns and mentored junior creators, resulting in 200% increase in client engagement.",
+    role: "Computer Science Instructor",
+    company: "Educational Institute",
+    description: "Teaching computer science fundamentals and advanced programming concepts to students.",
     achievements: [
-      "Managed a team of 5 content creators",
-      "Delivered 50+ successful campaigns",
-      "Increased social media engagement by 150%",
-      "Implemented new content strategy framework"
+      "Developed comprehensive curriculum",
+      "Mentored 100+ students",
+      "Improved student success rate by 40%",
+      "Created interactive learning materials"
     ],
     gradient: "from-blue-500 to-cyan-500"
   },
   {
     year: "2021-2022",
-    role: "Content Strategy Lead",
-    company: "Creative Studio",
-    description: "Developed and executed content strategies for major brands, focusing on video and social media content.",
+    role: "Machine Learning Engineer",
+    company: "Tech Company",
+    description: "Developed and implemented machine learning solutions for real-world problems.",
     achievements: [
-      "Launched viral marketing campaigns",
-      "Optimized content workflow efficiency",
-      "Created brand guidelines for clients",
-      "Achieved 1M+ views on campaigns"
+      "Built classification models",
+      "Optimized model performance",
+      "Implemented data preprocessing pipelines",
+      "Achieved 95% accuracy in predictions"
     ],
     gradient: "from-purple-500 to-pink-500"
   },
   {
     year: "2020",
-    role: "Content Creator",
-    company: "Media Production House",
-    description: "Created multimedia content for diverse client portfolio, specializing in video production and photography.",
+    role: "Backend Developer",
+    company: "Software Company",
+    description: "Developed robust backend systems and APIs for various applications.",
     achievements: [
-      "Produced 100+ video projects",
-      "Managed client relationships",
-      "Developed content calendars",
-      "Enhanced brand storytelling"
+      "Built scalable APIs",
+      "Optimized database performance",
+      "Implemented security measures",
+      "Reduced response time by 60%"
     ],
     gradient: "from-orange-500 to-red-500"
   }
@@ -76,22 +76,22 @@ const experiences = [
 
 const certifications = [
   {
-    name: "Advanced Content Strategy",
-    issuer: "Digital Marketing Institute",
+    name: "Machine Learning Specialization",
+    issuer: "Stanford University",
     date: "2022",
     icon: AcademicCapIcon,
     gradient: "from-green-500 to-teal-500"
   },
   {
-    name: "Video Production Mastery",
-    issuer: "Film Academy",
+    name: "Advanced Python Programming",
+    issuer: "Python Institute",
     date: "2021",
     icon: RocketLaunchIcon,
     gradient: "from-pink-500 to-rose-500"
   },
   {
-    name: "Social Media Management",
-    issuer: "Social Media Academy",
+    name: "Backend Development",
+    issuer: "Tech Academy",
     date: "2021",
     icon: LightBulbIcon,
     gradient: "from-indigo-500 to-violet-500"

@@ -12,6 +12,8 @@ import {
   MegaphoneIcon,
   RocketLaunchIcon,
   SparklesIcon,
+  CommandLineIcon,
+  AcademicCapIcon,
 } from '@heroicons/react/24/outline'
 import clsx from 'clsx'
 
@@ -37,32 +39,46 @@ const container = {
 
 const projects = [
   {
-    title: "Brand Identity Campaign",
-    category: "Digital Marketing",
-    description: "A comprehensive brand identity campaign for a tech startup, including social media strategy, content creation, and visual design.",
-    image: "/images/projects/content-strategy.jpg",
-    tags: ["Branding", "Social Media", "Content Strategy"],
+    title: "Water Quality Control System",
+    category: "Backend Development",
+    description: "Developed a digital system to automate water analysis process at drinking water treatment facilities using Node.js and MySQL.",
+    image: "/images/projects/backend.jpg",
+    tags: ["Node.js", "MySQL", "API"],
     stats: [
-      { label: "Engagement", value: "+200%" },
-      { label: "Reach", value: "1M+" },
-      { label: "ROI", value: "350%" }
+      { label: "Performance", value: "+60%" },
+      { label: "Accuracy", value: "99.9%" },
+      { label: "Cost Reduction", value: "40%" }
     ],
     gradient: "from-blue-500 to-cyan-500",
-    icon: RocketLaunchIcon
+    icon: CommandLineIcon
   },
   {
-    title: "Product Launch Video Series",
-    category: "Video Production",
-    description: "A series of promotional videos for a new product launch, including concept development, filming, and post-production.",
-    image: "/images/projects/video-campaign.jpg",
-    tags: ["Video", "Production", "Editing"],
+    title: "Car Classification Model",
+    category: "Machine Learning",
+    description: "Built and deployed machine learning models for classifying car types based on various features using Python and scikit-learn.",
+    image: "/images/projects/ml.jpg",
+    tags: ["Python", "ML", "Data Analysis"],
     stats: [
-      { label: "Views", value: "2M+" },
-      { label: "Conversion", value: "+150%" },
-      { label: "Shares", value: "50K+" }
+      { label: "Accuracy", value: "95%" },
+      { label: "Processing", value: "Real-time" },
+      { label: "Features", value: "50+" }
     ],
     gradient: "from-purple-500 to-pink-500",
-    icon: VideoCameraIcon
+    icon: SparklesIcon
+  },
+  {
+    title: "CS Learning Platform",
+    category: "Education",
+    description: "Developed an interactive learning platform for computer science students with coding exercises and real-time feedback.",
+    image: "/images/projects/education.jpg",
+    tags: ["Education", "Platform", "Interactive"],
+    stats: [
+      { label: "Students", value: "1000+" },
+      { label: "Success Rate", value: "+40%" },
+      { label: "Exercises", value: "200+" }
+    ],
+    gradient: "from-orange-500 to-red-500",
+    icon: AcademicCapIcon
   },
   {
     title: "Corporate Website Redesign",
@@ -124,8 +140,9 @@ const projects = [
 
 const categories = [
   'All',
-  'Digital Marketing',
-  'Video Production',
+  'Backend Development',
+  'Machine Learning',
+  'Education',
   'Content Writing',
   'Social Media',
   'Photography',
