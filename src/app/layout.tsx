@@ -16,9 +16,9 @@ const playfairDisplay = Playfair_Display({
 })
 
 export const metadata: Metadata = {
-  title: 'Omnia Gamal | Computer Science Instructor & Developer',
-  description: 'Portfolio website showcasing the work and expertise of Omnia Gamal, a Computer Science Instructor and Programmer specializing in teaching, machine learning, and backend development.',
-  keywords: ['computer science instructor', 'programmer', 'machine learning', 'backend development', 'coding instructor', 'portfolio', 'Omnia Gamal'],
+  title: 'Abdelrahman Younes',
+  description: 'Portfolio website showcasing the work and expertise of Abdelrahman Younes, a professional content creator specializing in creative storytelling and digital media.',
+  keywords: ['content creator', 'digital media', 'portfolio', 'creative professional', 'Abdelrahman Younes'],
   icons: [
     {
       rel: 'icon',

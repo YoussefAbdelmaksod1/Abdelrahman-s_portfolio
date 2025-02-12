@@ -31,6 +31,18 @@ const container = {
   }
 }
 
+const rotatingBorder = {
+  animate: {
+    rotate: [0, 360],
+    transition: {
+      duration: 20,
+      repeat: Infinity,
+      ease: "linear",
+      repeatType: "loop"
+    }
+  }
+}
+
 export default function AboutPage() {
   return (
     <>
@@ -81,7 +93,8 @@ export default function AboutPage() {
                 className="grid grid-cols-1 gap-12 lg:grid-cols-2 items-center mb-24"
                 variants={container}
                 initial="hidden"
-                animate="visible"
+                whileInView="visible"
+                viewport={{ once: true }}
               >
                 <motion.div 
                   className="relative aspect-square w-full max-w-md mx-auto"
@@ -94,17 +107,34 @@ export default function AboutPage() {
                       fill
                       className="object-cover"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-tr from-primary-500/20 to-transparent" />
+                    <motion.div 
+                      className="absolute inset-0 bg-gradient-to-tr from-primary-500/20 to-transparent"
+                      animate={{
+                        opacity: [0.2, 0.4, 0.2],
+                      }}
+                      transition={{
+                        duration: 3,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                    />
                   </div>
                   <motion.div
                     className="absolute -inset-4 -z-10 border-2 border-primary-200 rounded-2xl"
-                    animate={{
-                      rotate: [0, -360],
-                    }}
+                    variants={rotatingBorder}
+                    animate="animate"
+                    initial={false}
+                  />
+                  <motion.div
+                    className="absolute -inset-8 -z-20 border border-primary-100 rounded-2xl"
+                    variants={rotatingBorder}
+                    animate="animate"
+                    initial={false}
                     transition={{
                       duration: 25,
                       repeat: Infinity,
-                      ease: "linear"
+                      ease: "linear",
+                      repeatType: "loop"
                     }}
                   />
                 </motion.div>
