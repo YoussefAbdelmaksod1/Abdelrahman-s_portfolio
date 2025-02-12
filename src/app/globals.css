@@ -1,0 +1,203 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --scroll-margin-top: 100px;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  section {
+    scroll-margin-top: var(--scroll-margin-top);
+  }
+
+  body {
+    @apply bg-white text-gray-900 transition-colors duration-300 dark:bg-gray-900 dark:text-gray-100;
+  }
+
+  /* Improve text readability on mobile */
+  @media (max-width: 640px) {
+    body {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+  }
+}
+
+@layer components {
+  .container {
+    @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .heading-1 {
+    @apply font-display text-4xl font-bold sm:text-5xl md:text-6xl leading-tight dark:text-white;
+  }
+
+  .heading-2 {
+    @apply font-display text-3xl font-bold sm:text-4xl leading-tight dark:text-white;
+  }
+
+  .heading-3 {
+    @apply font-display text-2xl font-bold sm:text-3xl leading-tight dark:text-white;
+  }
+
+  /* Improved button styles for mobile */
+  .btn {
+    @apply relative inline-flex items-center justify-center px-6 py-3 text-base font-medium
+    transition-all duration-300 ease-out rounded-xl
+    focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 
+    disabled:pointer-events-none disabled:opacity-50
+    overflow-hidden shadow-lg hover:shadow-xl
+    w-full sm:w-auto;
+  }
+
+  .btn::before {
+    @apply absolute inset-0 w-full h-full transition-all duration-300 ease-out transform scale-x-0 origin-left;
+    content: '';
+    z-index: -1;
+  }
+
+  .btn:hover::before {
+    @apply scale-x-100;
+  }
+
+  .btn-primary {
+    @apply btn bg-gradient-to-r from-primary-600 to-primary-500 text-white hover:from-primary-700 hover:to-primary-600 dark:from-primary-500 dark:to-primary-400 dark:hover:from-primary-600 dark:hover:to-primary-500;
+  }
+
+  .btn-primary::before {
+    @apply bg-gradient-to-r from-primary-700 to-primary-600 dark:from-primary-600 dark:to-primary-500;
+  }
+
+  .btn-secondary {
+    @apply btn bg-gradient-to-r from-secondary-600 to-secondary-500 text-white hover:from-secondary-700 hover:to-secondary-600;
+  }
+
+  .btn-secondary::before {
+    @apply bg-gradient-to-r from-secondary-700 to-secondary-600;
+  }
+
+  .btn-outline {
+    @apply btn border-2 border-primary-600 text-primary-600 bg-transparent hover:text-white dark:border-primary-400 dark:text-primary-400;
+  }
+
+  .btn-outline::before {
+    @apply bg-primary-600 dark:bg-primary-500;
+  }
+
+  /* Mobile-friendly card styles */
+  .card {
+    @apply bg-white dark:bg-gray-800 rounded-2xl shadow-lg transition-all duration-300
+    hover:shadow-xl p-4 sm:p-6 dark:shadow-gray-900/50;
+  }
+
+  .card-hover {
+    @apply hover:-translate-y-1;
+  }
+
+  /* Section backgrounds */
+  .section-light {
+    @apply bg-white dark:bg-gray-900;
+  }
+
+  .section-gradient {
+    @apply bg-gradient-to-b from-white to-primary-50 dark:from-gray-900 dark:to-gray-800;
+  }
+
+  .section-alt {
+    @apply bg-primary-50 dark:bg-gray-800;
+  }
+
+  /* Text colors */
+  .text-body {
+    @apply text-gray-600 dark:text-gray-300;
+  }
+
+  .text-muted {
+    @apply text-gray-500 dark:text-gray-400;
+  }
+
+  /* Card and container backgrounds */
+  .bg-card {
+    @apply bg-white dark:bg-gray-800;
+  }
+
+  .bg-subtle {
+    @apply bg-gray-50 dark:bg-gray-800/50;
+  }
+
+  /* Border colors */
+  .border-subtle {
+    @apply border-gray-200 dark:border-gray-700;
+  }
+
+  /* Hover effects */
+  .hover-card {
+    @apply hover:shadow-lg dark:hover:shadow-primary-500/10 transition-shadow duration-300;
+  }
+
+  /* Responsive grid layouts */
+  .responsive-grid {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8;
+  }
+
+  /* Improved spacing utilities */
+  .section-padding {
+    @apply py-16 sm:py-24;
+  }
+
+  .section-margin {
+    @apply my-16 sm:my-24;
+  }
+}
+
+/* Enhanced blob animation */
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+.animate-blob {
+  animation: blob 7s infinite;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+/* Mobile-specific animations */
+@media (max-width: 640px) {
+  .animate-blob {
+    animation-duration: 10s;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) {
+  .btn:active {
+    transform: scale(0.98);
+  }
+  
+  .card-hover:active {
+    transform: translateY(-2px);
+  }
+} 
