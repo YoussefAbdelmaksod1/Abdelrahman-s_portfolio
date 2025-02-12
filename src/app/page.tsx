@@ -83,7 +83,7 @@ export default function HomePage() {
     <>
       <Navigation />
       <main className="flex-grow">
-        {/* Hero Section with 3D Effect and Image */}
+        {/* Hero Section */}
         <section className="relative min-h-screen overflow-hidden section-gradient pt-32 lg:pt-40">
           <div className="container relative z-10">
             <div className="grid items-center gap-12 lg:grid-cols-2">
@@ -99,10 +99,10 @@ export default function HomePage() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2 }}
                 >
-                  Professional{' '}
+                  Computer Science{' '}
                   <span className="relative">
                     <span className="relative z-10 bg-gradient-to-r from-primary-600 via-primary-600 to-primary-600 bg-clip-text text-transparent font-bold">
-                      Content Creator
+                      Instructor & Developer
                     </span>
                     <motion.span
                       className="absolute -inset-1 -z-10 block rounded-lg bg-primary-100/50 blur-xl"
@@ -118,7 +118,7 @@ export default function HomePage() {
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.4 }}
                 >
-                  Award-winning content creator specializing in digital storytelling, video production, and strategic content development. With a passion for creating engaging narratives that drive results and connect with audiences.
+                  Passionate computer science instructor and curriculum developer with expertise in machine learning, backend development, and problem-solving. Dedicated to sharing knowledge and empowering the next generation of developers.
                 </motion.p>
                 <motion.div 
                   className="mt-10 flex items-center justify-center gap-x-6 lg:justify-start"
@@ -126,23 +126,11 @@ export default function HomePage() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.6 }}
                 >
-                  <Link href="/portfolio" className="btn-primary group relative overflow-hidden">
-                    <span className="relative z-10">View My Work</span>
-                    <motion.span
-                      className="absolute inset-0 -z-10 bg-primary-700"
-                      initial={{ x: '-100%' }}
-                      whileHover={{ x: 0 }}
-                      transition={{ type: 'tween' }}
-                    />
+                  <Link href="/portfolio" className="btn-primary">
+                    View My Projects
                   </Link>
-                  <Link href="/contact" className="btn-outline group relative overflow-hidden">
-                    <span className="relative z-10">Get in Touch</span>
-                    <motion.span
-                      className="absolute inset-0 -z-10 bg-primary-50"
-                      initial={{ x: '-100%' }}
-                      whileHover={{ x: 0 }}
-                      transition={{ type: 'tween' }}
-                    />
+                  <Link href="/contact" className="btn-outline">
+                    Get in Touch
                   </Link>
                 </motion.div>
               </motion.div>
@@ -168,7 +156,7 @@ export default function HomePage() {
                   />
                   <Image
                     src="/images/profile.jpg"
-                    alt="Abdelrahman Younes"
+                    alt="Omnia Gamal"
                     fill
                     className="object-cover"
                     priority
@@ -366,8 +354,8 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Skills & Expertise Section */}
-        <section className="relative section-gradient py-24 sm:py-32">
+        {/* Skills Section */}
+        <section className="relative section-alt py-24 sm:py-32">
           <div className="container">
             <motion.div
               className="mx-auto max-w-2xl text-center"
@@ -375,82 +363,58 @@ export default function HomePage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <motion.div
-                className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-primary-100"
-                whileHover={{ scale: 1.1, rotate: 90 }}
-                transition={{ type: "spring", stiffness: 200 }}
-              >
-                <BriefcaseIcon className="h-8 w-8 text-primary-600" />
-              </motion.div>
               <h2 className="heading-2">Skills & Expertise</h2>
               <p className="mt-4 text-lg leading-8 text-gray-600">
-                Mastering the tools and techniques that drive modern digital content creation
+                Specialized in teaching, machine learning, and software development
               </p>
             </motion.div>
 
             <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
               {[
                 {
-                  category: "Content Creation",
-                  skills: ["Video Production", "Photography", "Graphic Design", "Copywriting"],
-                  icon: VideoCameraIcon,
-                  gradient: "from-blue-500 to-cyan-500"
+                  title: "Computer Science Education",
+                  description: "Experienced instructor with a passion for teaching programming and computer science concepts to students of all levels.",
+                  icon: AcademicCapIcon,
                 },
                 {
-                  category: "Digital Marketing",
-                  skills: ["Social Media", "SEO", "Email Marketing", "Analytics"],
-                  icon: MegaphoneIcon,
-                  gradient: "from-purple-500 to-pink-500"
+                  title: "Machine Learning",
+                  description: "Expertise in machine learning algorithms, data preprocessing, and model development for real-world applications.",
+                  icon: SparklesIcon,
                 },
                 {
-                  category: "Technical Skills",
-                  skills: ["Adobe Creative Suite", "Final Cut Pro", "WordPress", "HTML/CSS"],
+                  title: "Backend Development",
+                  description: "Proficient in building robust backend systems using Node.js, PHP, and various databases.",
                   icon: CommandLineIcon,
-                  gradient: "from-orange-500 to-red-500"
                 },
-              ].map((category, index) => (
+              ].map((feature, index) => (
                 <motion.div
-                  key={category.category}
-                  className="group relative isolate flex cursor-pointer flex-col overflow-hidden rounded-2xl bg-white dark:bg-gray-800 shadow-lg"
+                  key={feature.title}
+                  className="group relative bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg ring-1 ring-gray-200/50 dark:ring-gray-700/50 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.2 }}
-                  whileHover={{
-                    y: -5,
-                    transition: { duration: 0.2 }
-                  }}
                 >
-                  <div className={`absolute -inset-0.5 bg-gradient-to-r ${category.gradient} rounded-2xl blur opacity-25 group-hover:opacity-100 transition duration-1000 group-hover:duration-200`} />
-                  <div className="relative p-8">
-                    <div className="flex items-center gap-4">
-                      <motion.div
-                        className={`flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br ${category.gradient}`}
-                      >
-                        <category.icon className="h-6 w-6 text-white" />
-                      </motion.div>
-                      <h3 className="text-xl font-semibold text-gray-900 dark:text-white">{category.category}</h3>
-                    </div>
-                    <div className="mt-4 flex flex-wrap gap-2">
-                      {category.skills.map((skill) => (
-                        <motion.span
-                          key={skill}
-                          className="inline-flex items-center rounded-full bg-gray-100 dark:bg-gray-700 px-3 py-1 text-sm font-medium text-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors duration-300"
-                          whileHover={{ scale: 1.05 }}
-                        >
-                          {skill}
-                        </motion.span>
-                      ))}
-                    </div>
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-primary-100/0 to-primary-100/0 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                  <div className="flex items-center gap-4">
+                    <motion.div
+                      className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary-100 dark:bg-gray-700 text-primary-600 dark:text-primary-400"
+                    >
+                      <feature.icon className="h-6 w-6" />
+                    </motion.div>
+                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white">{feature.title}</h3>
                   </div>
+                  <p className="mt-4 text-body">
+                    {feature.description}
+                  </p>
                 </motion.div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Featured Work Section */}
-        <section className="relative section-light py-24 sm:py-32">
+        {/* Featured Projects */}
+        <section className="section-light py-24 sm:py-32">
           <div className="container">
             <motion.div 
               className="mx-auto max-w-2xl text-center"
@@ -458,9 +422,9 @@ export default function HomePage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="heading-2">Featured Work</h2>
+              <h2 className="heading-2">Featured Projects</h2>
               <p className="mt-4 text-lg leading-8 text-gray-600 dark:text-gray-300">
-                A selection of my most impactful projects and collaborations.
+                A selection of my recent development and research projects
               </p>
             </motion.div>
             <motion.div 
@@ -472,21 +436,21 @@ export default function HomePage() {
             >
               {[
                 {
-                  title: "Digital Content Strategy",
-                  description: "Developed and executed a comprehensive content strategy that increased client engagement by 200% across all digital platforms.",
-                  tags: ["Strategy", "Analytics", "Social Media"],
+                  title: "Water Quality Control System",
+                  description: "Digital system to automate water analysis process at drinking water treatment facilities using Node.js and MySQL.",
+                  tags: ["Node.js", "MySQL", "API", "Backend"],
                   gradient: "from-blue-500 to-cyan-500"
                 },
                 {
-                  title: "Video Production Campaign",
-                  description: "Created a series of high-impact promotional videos for a major brand launch, reaching over 1M views across platforms.",
-                  tags: ["Video", "Production", "Branding"],
+                  title: "Car Classification Models",
+                  description: "Machine learning models for classifying car types based on various features using Python and scikit-learn.",
+                  tags: ["Python", "ML", "Data Analysis"],
                   gradient: "from-purple-500 to-pink-500"
                 },
                 {
-                  title: "Creative Storytelling",
-                  description: "Crafted compelling narrative content for a non-profit organization, helping them secure increased funding and support.",
-                  tags: ["Writing", "Impact", "Storytelling"],
+                  title: "Breast Cancer Classifier",
+                  description: "Implementation of machine learning models for classifying breast cancer diagnoses using various algorithms.",
+                  tags: ["Python", "ML", "Healthcare"],
                   gradient: "from-orange-500 to-red-500"
                 }
               ].map((project) => (

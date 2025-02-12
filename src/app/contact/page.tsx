@@ -3,6 +3,7 @@ import {
   EnvelopeIcon,
   PhoneIcon,
   MapPinIcon,
+  LinkIcon,
 } from '@heroicons/react/24/outline'
 
 const contactMethods = [
@@ -10,19 +11,20 @@ const contactMethods = [
     name: 'Email',
     description: 'Send me an email anytime',
     icon: EnvelopeIcon,
-    contact: 'contact@abdelrahmanyounes.com',
+    contact: 'abdelrahmany99@gmail.com',
   },
   {
     name: 'Phone',
-    description: 'Mon-Fri from 9am to 6pm',
+    description: 'Available for calls',
     icon: PhoneIcon,
-    contact: '+1 (555) 123-4567',
+    contact: '+20 01210233451',
   },
   {
-    name: 'Office',
-    description: 'Come say hello',
-    icon: MapPinIcon,
-    contact: '123 Content Creator St, Digital City, DC 12345',
+    name: 'LinkedIn',
+    description: 'Connect with me',
+    icon: LinkIcon,
+    contact: 'linkedin.com/in/abdelrahman-younes',
+    href: 'https://www.linkedin.com/in/abdelrahman-younes-?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app',
   },
 ]
 
@@ -70,7 +72,19 @@ export default function ContactPage() {
                           {method.name}
                         </dt>{' '}
                         <dd className="inline">
-                          {method.description} - {method.contact}
+                          {method.description} - {' '}
+                          {method.href ? (
+                            <a 
+                              href={method.href} 
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                              className="text-primary-600 dark:text-primary-400 hover:underline"
+                            >
+                              {method.contact}
+                            </a>
+                          ) : (
+                            method.contact
+                          )}
                         </dd>
                       </div>
                     ))}
