@@ -39,7 +39,7 @@ export function Navigation() {
       <nav className="container flex items-center justify-between py-4 lg:py-6" aria-label="Global">
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-1.5">
-            <span className="font-display text-lg sm:text-xl font-bold dark:text-white">Omnia Gamal</span>
+            <span className="font-display text-lg sm:text-xl font-bold dark:text-white">Abdelrahman Younes</span>
           </Link>
         </div>
         <div className="flex items-center gap-4 lg:hidden">
