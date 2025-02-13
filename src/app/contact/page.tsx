@@ -5,6 +5,7 @@ import {
   EnvelopeIcon,
 } from '@heroicons/react/24/outline'
 import { ComponentType, FC } from 'react'
+import React from 'react'
 
 interface ContactMethod {
   name: string;
@@ -82,16 +83,12 @@ export default function ContactPage() {
                     {contactMethods.map((method) => (
                       <div key={method.name} className="relative pl-9 group">
                         <dt className="inline font-semibold text-gray-900 dark:text-white">
-                          {typeof method.icon === 'function' ? (
-                            <span className="absolute left-1 top-1 text-primary-600 dark:text-primary-400 transition-transform duration-300 group-hover:scale-110">
-                              {method.icon({})}
-                            </span>
-                          ) : (
-                            <method.icon
-                              className="absolute left-1 top-1 h-5 w-5 text-primary-600 dark:text-primary-400 transition-transform duration-300 group-hover:scale-110"
-                              aria-hidden="true"
-                            />
-                          )}
+                          <span className="absolute left-1 top-1 text-primary-600 dark:text-primary-400 transition-transform duration-300 group-hover:scale-110">
+                            {React.createElement(method.icon, {
+                              className: "h-5 w-5",
+                              "aria-hidden": true
+                            })}
+                          </span>
                           {method.name}
                         </dt>{' '}
                         <dd className="inline">
