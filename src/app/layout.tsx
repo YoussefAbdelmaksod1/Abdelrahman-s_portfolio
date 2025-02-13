@@ -5,14 +5,18 @@ import './globals.css'
 
 const inter = Inter({
   subsets: ['latin'],
-  variable: '--font-inter',
   display: 'swap',
+  variable: '--font-inter',
+  preload: true,
+  fallback: ['system-ui', 'arial']
 })
 
 const playfairDisplay = Playfair_Display({
   subsets: ['latin'],
-  variable: '--font-playfair-display',
   display: 'swap',
+  variable: '--font-playfair-display',
+  preload: true,
+  fallback: ['Georgia', 'serif']
 })
 
 export const metadata: Metadata = {
@@ -44,7 +48,7 @@ export default function RootLayout({
         <link rel="icon" href="/images/logo.png" type="image/png" />
         <link rel="apple-touch-icon" href="/images/logo.png" />
       </head>
-      <body className="bg-white text-gray-900 antialiased transition-colors duration-300 dark:bg-dark dark:text-gray-100">
+      <body className={`${inter.className} bg-white text-gray-900 antialiased transition-colors duration-300 dark:bg-dark dark:text-gray-100`}>
         <ThemeProvider>
           <div className="flex min-h-screen flex-col">
             {children}

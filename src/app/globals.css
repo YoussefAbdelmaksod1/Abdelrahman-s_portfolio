@@ -46,13 +46,13 @@
     @apply font-display text-2xl font-bold sm:text-3xl leading-tight dark:text-white;
   }
 
-  /* Improved button styles for mobile */
+  /* Enhanced button styles with better shadows */
   .btn {
     @apply relative inline-flex items-center justify-center px-6 py-3 text-base font-medium
     transition-all duration-300 ease-out rounded-xl
     focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 
     disabled:pointer-events-none disabled:opacity-50
-    overflow-hidden shadow-lg hover:shadow-xl
+    overflow-hidden shadow-[0_4px_12px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.12)]
     w-full sm:w-auto;
   }
 
@@ -90,27 +90,35 @@
     @apply bg-primary-600 dark:bg-primary-500;
   }
 
-  /* Mobile-friendly card styles */
+  /* Enhanced card styles with better shadows */
   .card {
-    @apply bg-white dark:bg-gray-800 rounded-2xl shadow-lg transition-all duration-300
-    hover:shadow-xl p-4 sm:p-6 dark:shadow-gray-900/50;
+    @apply bg-white dark:bg-gray-800 rounded-2xl transition-all duration-300
+    shadow-[0_4px_20px_-4px_rgba(16,24,40,0.08),0_4px_4px_-4px_rgba(16,24,40,0.03)] 
+    hover:shadow-[0_12px_32px_-4px_rgba(16,24,40,0.12),0_4px_8px_-4px_rgba(16,24,40,0.06)]
+    dark:shadow-[0_4px_12px_rgba(0,0,0,0.2)] dark:hover:shadow-[0_8px_24px_rgba(0,0,0,0.24)]
+    p-4 sm:p-6;
   }
 
   .card-hover {
-    @apply hover:-translate-y-1;
+    @apply hover:-translate-y-1 
+    hover:shadow-[0_12px_32px_-4px_rgba(16,24,40,0.12),0_4px_8px_-4px_rgba(16,24,40,0.06)]
+    dark:hover:shadow-[0_8px_24px_rgba(0,0,0,0.24)];
   }
 
-  /* Section backgrounds */
+  /* Enhanced section backgrounds with subtle shadows */
   .section-light {
-    @apply bg-white dark:bg-gray-900;
+    @apply bg-white dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800
+    shadow-[0_1px_2px_rgba(16,24,40,0.05)];
   }
 
   .section-gradient {
-    @apply bg-gradient-to-b from-white to-primary-50 dark:from-gray-900 dark:to-gray-800;
+    @apply bg-gradient-to-b from-white to-primary-50/50 dark:from-gray-900 dark:to-gray-800 
+    border-t border-b border-gray-100 dark:border-gray-800;
   }
 
   .section-alt {
-    @apply bg-primary-50 dark:bg-gray-800;
+    @apply bg-gray-50 dark:bg-gray-800/50 border-t border-b border-gray-100 dark:border-gray-800
+    shadow-[0_1px_2px_rgba(16,24,40,0.05)];
   }
 
   /* Text colors */
@@ -122,23 +130,29 @@
     @apply text-gray-500 dark:text-gray-400;
   }
 
-  /* Card and container backgrounds */
+  /* Enhanced card and container backgrounds with better shadows */
   .bg-card {
-    @apply bg-white dark:bg-gray-800;
+    @apply bg-white dark:bg-gray-800 
+    shadow-[0_4px_20px_-4px_rgba(16,24,40,0.08),0_4px_4px_-4px_rgba(16,24,40,0.03)] 
+    hover:shadow-[0_12px_32px_-4px_rgba(16,24,40,0.12),0_4px_8px_-4px_rgba(16,24,40,0.06)]
+    dark:shadow-[0_4px_12px_rgba(0,0,0,0.2)];
   }
 
   .bg-subtle {
-    @apply bg-gray-50 dark:bg-gray-800/50;
+    @apply bg-gray-50/80 backdrop-blur-sm dark:bg-gray-800/50
+    shadow-[0_1px_2px_rgba(16,24,40,0.05)];
   }
 
   /* Border colors */
   .border-subtle {
-    @apply border-gray-200 dark:border-gray-700;
+    @apply border-gray-200/80 dark:border-gray-700/80;
   }
 
-  /* Hover effects */
+  /* Enhanced hover effects with better shadows */
   .hover-card {
-    @apply hover:shadow-lg dark:hover:shadow-primary-500/10 transition-shadow duration-300;
+    @apply hover:shadow-[0_12px_32px_-4px_rgba(16,24,40,0.12),0_4px_8px_-4px_rgba(16,24,40,0.06)]
+    dark:hover:shadow-[0_8px_24px_rgba(0,0,0,0.24)]
+    transition-all duration-300;
   }
 
   /* Responsive grid layouts */

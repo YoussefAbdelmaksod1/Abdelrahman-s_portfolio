@@ -99,17 +99,11 @@ export default function HomePage() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2 }}
                 >
-                  Computer Science{' '}
+                  Content Creator{' '}
                   <span className="relative">
                     <span className="relative z-10 bg-gradient-to-r from-primary-600 via-primary-600 to-primary-600 bg-clip-text text-transparent font-bold">
-                      Instructor & Developer
+                      & Digital Storyteller
                     </span>
-                    <motion.span
-                      className="absolute -inset-1 -z-10 block rounded-lg bg-primary-100/50 blur-xl"
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 1 }}
-                      transition={{ delay: 0.5 }}
-                    />
                   </span>
                 </motion.h1>
                 <motion.p 
@@ -118,7 +112,7 @@ export default function HomePage() {
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.4 }}
                 >
-                  Passionate content creator specializing in crafting compelling digital experiences that resonate with audiences and drive meaningful engagement. Dedicated to delivering high-quality content that makes an impact.
+                  Passionate content creator specializing in crafting compelling digital experiences that resonate with audiences and drive meaningful engagement.
                 </motion.p>
                 <motion.div 
                   className="mt-10 flex items-center justify-center gap-x-6 lg:justify-start"
@@ -226,59 +220,92 @@ export default function HomePage() {
               </motion.div>
               <h2 className="heading-2">Why Choose Me?</h2>
               <p className="mt-4 text-lg leading-8 text-gray-600 dark:text-gray-300">
-                Combining creative excellence with strategic thinking to deliver exceptional content that makes an impact
+                Here's how I can help you learn and grow
               </p>
             </motion.div>
 
             <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
               {[
                 {
-                  title: "Creative Storytelling",
-                  description: "Crafting compelling narratives that captivate and engage your audience",
-                  icon: PencilSquareIcon,
+                  title: "Visual Storytelling",
+                  description: "Creating eye-catching photos and videos that tell your story",
+                  icon: VideoCameraIcon,
+                  gradient: "from-blue-500 to-cyan-500"
                 },
                 {
-                  title: "Technical Excellence",
-                  description: "Leveraging cutting-edge tools and techniques for premium content creation",
-                  icon: CommandLineIcon,
+                  title: "Social Media",
+                  description: "Making content that people love to share and engage with",
+                  icon: MegaphoneIcon,
+                  gradient: "from-purple-500 to-pink-500"
                 },
                 {
-                  title: "Strategic Approach",
-                  description: "Data-driven content strategies aligned with your business goals",
+                  title: "Content Strategy",
+                  description: "Planning content that helps reach your goals",
                   icon: PresentationChartBarIcon,
+                  gradient: "from-orange-500 to-red-500"
                 },
               ].map((feature, index) => (
                 <motion.div
                   key={feature.title}
-                  className="group relative bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg ring-1 ring-gray-200/50 dark:ring-gray-700/50 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  className="group relative bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg ring-1 ring-gray-200/50 dark:ring-gray-700/50 transition-all duration-300"
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ 
+                    opacity: 1, 
+                    y: 0,
+                    transition: {
+                      type: "spring",
+                      bounce: 0.4,
+                      duration: 0.8,
+                      delay: index * 0.2
+                    }
+                  }}
                   viewport={{ once: true }}
-                  transition={{ delay: index * 0.2 }}
+                  whileHover={{ 
+                    y: -10,
+                    transition: {
+                      type: "spring",
+                      stiffness: 400,
+                      damping: 10
+                    }
+                  }}
                 >
-                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-primary-100/0 to-primary-100/0 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                  <div className="flex items-center gap-4">
+                  <div className={`absolute -inset-0.5 bg-gradient-to-r ${feature.gradient} rounded-2xl blur opacity-0 transition-all duration-300 group-hover:opacity-75`} />
+                  <div className="relative">
                     <motion.div
-                      className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary-100 dark:bg-gray-700 text-primary-600 dark:text-primary-400"
+                      className={`flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br ${feature.gradient}`}
+                      whileHover={{ scale: 1.1, rotate: 360 }}
+                      transition={{ type: "spring", stiffness: 300, damping: 10 }}
                     >
-                      <feature.icon className="h-6 w-6" />
+                      <feature.icon className="h-6 w-6 text-white" />
                     </motion.div>
-                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white">{feature.title}</h3>
+                    <motion.h3 
+                      className="mt-4 text-xl font-semibold text-gray-900 dark:text-white"
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.3 + 0.2 }}
+                    >
+                      {feature.title}
+                    </motion.h3>
+                    <motion.p 
+                      className="mt-2 text-gray-600 dark:text-gray-300"
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      transition={{ delay: index * 0.3 + 0.4 }}
+                    >
+                      {feature.description}
+                    </motion.p>
                   </div>
-                  <p className="mt-4 text-body">
-                    {feature.description}
-                  </p>
                 </motion.div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Education & Experience Section */}
+        {/* Experience Timeline */}
         <section className="relative section-light py-24 sm:py-32">
           <div className="container">
             <motion.div
-              className="mx-auto max-w-2xl text-center"
+              className="mx-auto max-w-2xl text-center mb-16"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -288,63 +315,141 @@ export default function HomePage() {
                 whileHover={{ scale: 1.1 }}
                 transition={{ type: "spring", stiffness: 200 }}
               >
-                <AcademicCapIcon className="h-8 w-8 text-primary-600" />
+                <BriefcaseIcon className="h-8 w-8 text-primary-600" />
               </motion.div>
-              <h2 className="heading-2">Education & Experience</h2>
+              <h2 className="heading-2">Work Experience</h2>
               <p className="mt-4 text-lg leading-8 text-gray-600">
-                A decade of experience in content creation, backed by continuous learning and adaptation to emerging trends
+                A track record of creating impactful content and managing successful campaigns
               </p>
             </motion.div>
 
-            <div className="relative mt-16">
-              <div className="absolute left-1/2 h-full w-0.5 -translate-x-1/2">
-                <div className="h-full w-full bg-gradient-to-b from-primary-600 via-primary-500 to-primary-400 animate-pulse" />
-                <div className="absolute inset-0 bg-gradient-to-b from-primary-400 to-primary-600 blur-sm opacity-50" />
+            <div className="relative mt-16 max-w-5xl mx-auto">
+              <div className="absolute left-1/2 h-full w-1 -translate-x-1/2 bg-gradient-to-b from-primary-200 via-primary-400 to-primary-600">
+                <motion.div 
+                  className="h-full w-full bg-gradient-to-b from-primary-600 via-primary-500 to-primary-400"
+                  initial={{ height: 0 }}
+                  whileInView={{ height: "100%" }}
+                  transition={{ duration: 1.5, ease: "easeOut" }}
+                />
               </div>
+              
               <div className="space-y-12">
                 {[
                   {
-                    year: "2023",
-                    title: "Senior Content Creator",
-                    organization: "Digital Media Agency",
-                    description: "Led major content campaigns and mentored junior creators",
+                    period: "Nov 2024 - Present",
+                    role: "Account Manager",
+                    company: "ZED Marketing Agency",
+                    location: "Alexandria, Egypt",
+                    type: "Full-time",
+                    skills: ["Account Management", "Project Management", "Marketing Strategy", "Content Strategy"],
+                    gradient: "from-blue-500 to-cyan-500"
                   },
                   {
-                    year: "2021",
-                    title: "Content Strategy Certification",
-                    organization: "Digital Marketing Institute",
-                    description: "Advanced certification in content strategy and analytics",
+                    period: "Oct 2024 - Present",
+                    role: "Senior Content Creator",
+                    company: "ZED Marketing Agency",
+                    location: "Alexandria, Egypt",
+                    type: "Full-time",
+                    skills: ["Content Creation", "Social Media Content Creation", "Content Strategy", "Content Marketing"],
+                    gradient: "from-purple-500 to-pink-500"
                   },
                   {
-                    year: "2020",
-                    title: "Content Creator",
-                    organization: "Creative Studio",
-                    description: "Created multimedia content for diverse client portfolio",
+                    period: "Aug 2024 - Sep 2024",
+                    role: "Social Media Specialist",
+                    company: "NJO Business Solutions",
+                    location: "Alexandria, Egypt",
+                    type: "Full-time",
+                    skills: ["Social Media Marketing", "Social Media Management", "Social Media Strategy", "Content Marketing"],
+                    gradient: "from-orange-500 to-red-500"
                   },
+                  {
+                    period: "Jan 2024 - Jun 2024",
+                    role: "Junior Content Creator",
+                    company: "Trend Marketing Agency",
+                    location: "Alexandria, Egypt",
+                    type: "Full-time",
+                    skills: ["Content Creation", "Social Media", "Content Design", "Copywriting"],
+                    gradient: "from-green-500 to-teal-500"
+                  },
+                  {
+                    period: "Oct 2023 - Dec 2023",
+                    role: "Content Creator",
+                    company: "Kaf Production",
+                    location: "Alexandria, Egypt",
+                    type: "Internship",
+                    skills: ["Creative Content Creation", "Scriptwriting", "Content Planning", "Marketing Strategy"],
+                    gradient: "from-pink-500 to-rose-500"
+                  },
+                  {
+                    period: "Aug 2023 - Nov 2023",
+                    role: "Content Creator",
+                    company: "MMA - Modern Marketing Academy",
+                    location: "Alexandria, Egypt",
+                    type: "Internship",
+                    skills: ["Market Research", "Competitive Analysis", "Content Design", "Social Media Strategy"],
+                    gradient: "from-indigo-500 to-violet-500"
+                  },
+                  {
+                    period: "2022 - 2023",
+                    role: "Co-Founder & Digital Marketer",
+                    company: "Well & Fit",
+                    location: "Online",
+                    type: "Full-time",
+                    skills: ["Digital Marketing", "Content Strategy", "Brand Development", "Social Media Marketing"],
+                    gradient: "from-emerald-500 to-teal-500"
+                  }
                 ].map((item, index) => (
                   <motion.div
-                    key={item.year}
+                    key={item.period}
                     className={`flex ${index % 2 === 0 ? 'justify-start' : 'justify-end'} relative`}
-                    initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
+                    initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    transition={{ delay: index * 0.2 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
                   >
                     <motion.div
-                      className="group relative w-1/2"
+                      className="group relative w-[calc(50%-2rem)]"
                       whileHover={{ scale: 1.02 }}
                       transition={{ type: "spring", stiffness: 300 }}
                     >
-                      <div className="absolute -inset-0.5 bg-gradient-to-r from-primary-600 to-primary-400 rounded-lg blur opacity-0 group-hover:opacity-100 transition duration-1000" />
-                      <div className="relative bg-white dark:bg-gray-800 p-6 rounded-lg">
-                        <div className="flex items-center gap-4">
-                          <span className="rounded-full bg-primary-100 dark:bg-gray-700 px-3 py-1 text-sm font-medium text-primary-600 dark:text-primary-400 group-hover:bg-primary-600 group-hover:text-white transition-colors duration-300">
-                            {item.year}
+                      <div className={`absolute -inset-0.5 bg-gradient-to-r ${item.gradient} rounded-2xl blur opacity-25 group-hover:opacity-100 transition duration-300`} />
+                      <div className="relative bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg">
+                        <div className="flex items-center gap-4 mb-3">
+                          <span className={`px-3 py-1 text-sm font-medium rounded-full bg-gradient-to-r ${item.gradient} text-white`}>
+                            {item.period}
                           </span>
-                          <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{item.title}</h3>
+                          <span className="text-sm text-gray-500 dark:text-gray-400">
+                            {item.type}
+                          </span>
                         </div>
-                        <p className="mt-1 text-sm font-medium text-primary-600 dark:text-primary-400">{item.organization}</p>
-                        <p className="mt-4 text-body">{item.description}</p>
+                        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-1">
+                          {item.role}
+                        </h3>
+                        <p className="text-primary-600 dark:text-primary-400 font-medium mb-2">
+                          {item.company}
+                        </p>
+                        <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
+                          📍 {item.location}
+                        </p>
+                        <div className="flex flex-wrap gap-2">
+                          {item.skills.map((skill) => (
+                            <span
+                              key={skill}
+                              className="inline-flex items-center rounded-full bg-primary-50 dark:bg-gray-700 px-2.5 py-0.5 text-xs font-medium text-primary-600 dark:text-primary-400"
+                            >
+                              {skill}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                      <div className="absolute top-1/2 -translate-y-1/2 w-4 h-4">
+                        <motion.div
+                          className={`absolute inset-0 bg-gradient-to-r ${item.gradient} rounded-full`}
+                          initial={{ scale: 0 }}
+                          whileInView={{ scale: 1 }}
+                          transition={{ delay: 0.2 }}
+                        />
+                        <div className="absolute inset-1 bg-white dark:bg-gray-800 rounded-full" />
                       </div>
                     </motion.div>
                   </motion.div>
@@ -364,56 +469,74 @@ export default function HomePage() {
               viewport={{ once: true }}
             >
               <h2 className="heading-2">Skills & Expertise</h2>
-              <p className="mt-4 text-lg leading-8 text-gray-600">
-                Specialized in teaching, machine learning, and software development
+              <p className="mt-4 text-lg leading-8 text-gray-600 dark:text-gray-300">
+                A diverse skill set in content creation, marketing, and digital strategy
               </p>
             </motion.div>
 
-            <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-16 grid gap-12 lg:grid-cols-2">
               {[
                 {
-                  title: "Computer Science Education",
-                  description: "Experienced instructor with a passion for teaching programming and computer science concepts",
-                  icon: AcademicCapIcon,
+                  title: "Content Creation",
+                  skills: [
+                    { name: "Creative Writing", icon: "✍️" },
+                    { name: "Design Enhancement", icon: "🎨" },
+                    { name: "Art Direction", icon: "🎭" },
+                    { name: "Storytelling", icon: "📖" },
+                    { name: "Content Planning", icon: "📋" },
+                    { name: "Brand Voice", icon: "🎯" }
+                  ],
+                  gradient: "from-rose-400 to-purple-500"
                 },
                 {
-                  title: "Machine Learning",
-                  description: "Expertise in developing and implementing machine learning solutions",
-                  icon: SparklesIcon,
-                },
-                {
-                  title: "Backend Development",
-                  description: "Building robust and scalable backend systems",
-                  icon: CommandLineIcon,
-                },
-              ].map((feature, index) => (
+                  title: "Digital Marketing",
+                  skills: [
+                    { name: "Social Media", icon: "📱" },
+                    { name: "Content Strategy", icon: "🎯" },
+                    { name: "Brand Development", icon: "⭐" },
+                    { name: "Analytics", icon: "📊" },
+                    { name: "Campaign Management", icon: "🚀" },
+                    { name: "Market Research", icon: "🔍" }
+                  ],
+                  gradient: "from-blue-400 to-cyan-500"
+                }
+              ].map((category, index) => (
                 <motion.div
-                  key={feature.title}
-                  className="group relative bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg ring-1 ring-gray-200/50 dark:ring-gray-700/50 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+                  key={category.title}
+                  className="relative overflow-hidden bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
                   transition={{ delay: index * 0.2 }}
                 >
-                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-primary-100/0 to-primary-100/0 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                  <div className="flex items-center gap-4">
-                    <motion.div
-                      className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary-100 dark:bg-gray-700 text-primary-600 dark:text-primary-400"
-                    >
-                      <feature.icon className="h-6 w-6" />
-                    </motion.div>
-                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white">{feature.title}</h3>
+                  <h3 className={`text-2xl font-bold mb-8 bg-gradient-to-r ${category.gradient} bg-clip-text text-transparent`}>
+                    {category.title}
+                  </h3>
+                  <div className="grid gap-4">
+                    {category.skills.map((skill, skillIndex) => (
+                      <motion.div
+                        key={skill.name}
+                        className="group relative"
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ delay: skillIndex * 0.1 }}
+                        whileHover={{ x: 10 }}
+                      >
+                        <div className="flex items-center gap-4 p-4 bg-gray-50 dark:bg-gray-700/50 rounded-xl transition-all duration-300 hover:shadow-md">
+                          <span className="text-2xl">{skill.icon}</span>
+                          <span className="text-lg font-medium text-gray-800 dark:text-gray-200">
+                            {skill.name}
+                          </span>
+                        </div>
+                      </motion.div>
+                    ))}
                   </div>
-                  <p className="mt-4 text-body">
-                    {feature.description}
-                  </p>
                 </motion.div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Featured Projects */}
+        {/* Certificates Section */}
         <section className="section-light py-24 sm:py-32">
           <div className="container">
             <motion.div 
@@ -422,13 +545,13 @@ export default function HomePage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="heading-2">Featured Projects</h2>
+              <h2 className="heading-2">Certifications</h2>
               <p className="mt-4 text-lg leading-8 text-gray-600 dark:text-gray-300">
-                A selection of my recent development and research projects
+                Professional qualifications and achievements in digital marketing and content creation
               </p>
             </motion.div>
             <motion.div 
-              className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-3"
+              className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 sm:mt-20 lg:mx-0 lg:max-w-none"
               variants={container}
               initial="hidden"
               whileInView="visible"
@@ -436,48 +559,50 @@ export default function HomePage() {
             >
               {[
                 {
-                  title: "Water Quality Control System",
-                  description: "Digital system to automate water analysis process at drinking water treatment facilities using Node.js and MySQL.",
-                  tags: ["Node.js", "MySQL", "API", "Backend"],
-                  gradient: "from-blue-500 to-cyan-500"
-                },
-                {
-                  title: "Car Classification Models",
-                  description: "Machine learning models for classifying car types based on various features using Python and scikit-learn.",
-                  tags: ["Python", "ML", "Data Analysis"],
-                  gradient: "from-purple-500 to-pink-500"
-                },
-                {
-                  title: "Breast Cancer Classifier",
-                  description: "Implementation of machine learning models for classifying breast cancer diagnoses using various algorithms.",
-                  tags: ["Python", "ML", "Healthcare"],
-                  gradient: "from-orange-500 to-red-500"
+                  title: "Digital Marketing Diploma",
+                  issuer: "MMA - Modern Marketing Academy",
+                  date: "2023",
+                  description: "Comprehensive training in digital marketing strategies, social media management, and content creation",
+                  skills: ["Digital Marketing", "Social Media", "Content Strategy"],
+                  gradient: "from-blue-500 to-cyan-500",
+                  icon: AcademicCapIcon
                 }
-              ].map((project) => (
+              ].map((cert) => (
                 <motion.article
-                  key={project.title}
-                  className="group relative isolate flex cursor-pointer flex-col overflow-hidden rounded-2xl bg-white dark:bg-gray-800 shadow-lg"
+                  key={cert.title}
+                  className="group relative isolate flex cursor-pointer flex-col overflow-hidden rounded-2xl bg-white dark:bg-gray-800 shadow-lg max-w-2xl mx-auto"
                   variants={item}
                   whileHover={{
                     y: -5,
                     transition: { duration: 0.2 }
                   }}
                 >
-                  <div className={`absolute -inset-0.5 bg-gradient-to-r ${project.gradient} rounded-2xl blur opacity-25 group-hover:opacity-100 transition duration-1000 group-hover:duration-200`} />
+                  <div className={`absolute -inset-0.5 bg-gradient-to-r ${cert.gradient} rounded-2xl blur opacity-25 group-hover:opacity-100 transition duration-1000 group-hover:duration-200`} />
                   <div className="relative p-6">
-                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                      {project.title}
+                    <div className="flex items-center justify-between mb-4">
+                      <div className={`flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br ${cert.gradient}`}>
+                        {cert.icon && <cert.icon className="h-6 w-6 text-white" />}
+                      </div>
+                      <span className="text-sm font-medium text-gray-500 dark:text-gray-400">
+                        {cert.date}
+                      </span>
+                    </div>
+                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                      {cert.title}
                     </h3>
-                    <p className="text-gray-600 dark:text-gray-300 mb-4">
-                      {project.description}
+                    <p className="text-sm text-primary-600 dark:text-primary-400 mb-3">
+                      {cert.issuer}
+                    </p>
+                    <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm">
+                      {cert.description}
                     </p>
                     <div className="flex flex-wrap gap-2">
-                      {project.tags.map((tag) => (
+                      {cert.skills.map((skill) => (
                         <span
-                          key={tag}
-                          className="inline-flex items-center rounded-full bg-primary-50 dark:bg-gray-700 px-3 py-1 text-sm font-medium text-primary-600 dark:text-primary-400"
+                          key={skill}
+                          className="inline-flex items-center rounded-full bg-primary-50 dark:bg-gray-700 px-3 py-1 text-xs font-medium text-primary-600 dark:text-primary-400"
                         >
-                          {tag}
+                          {skill}
                         </span>
                       ))}
                     </div>
