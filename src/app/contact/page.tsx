@@ -4,8 +4,17 @@ import { Navigation } from '@/components/Navigation'
 import {
   EnvelopeIcon,
 } from '@heroicons/react/24/outline'
+import { ComponentType, FC } from 'react'
 
-const contactMethods = [
+interface ContactMethod {
+  name: string;
+  description: string;
+  icon: ComponentType<{ className?: string }> | FC;
+  contact: string;
+  href?: string;
+}
+
+const contactMethods: ContactMethod[] = [
   {
     name: 'Email',
     description: 'Send me an email anytime',
@@ -75,7 +84,7 @@ export default function ContactPage() {
                         <dt className="inline font-semibold text-gray-900 dark:text-white">
                           {typeof method.icon === 'function' ? (
                             <span className="absolute left-1 top-1 text-primary-600 dark:text-primary-400 transition-transform duration-300 group-hover:scale-110">
-                              <method.icon />
+                              {method.icon({})}
                             </span>
                           ) : (
                             <method.icon
