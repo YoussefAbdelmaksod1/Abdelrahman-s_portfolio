@@ -1,141 +1,171 @@
 'use client'
 
 import { useState } from 'react'
-import Link from 'next/link'
 import Image from 'next/image'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { Navigation } from '@/components/Navigation'
 import {
-  VideoCameraIcon,
-  PhotoIcon,
-  PencilSquareIcon,
-  RocketLaunchIcon,
-  HeartIcon,
-  StarIcon,
+  WrenchScrewdriverIcon,
+  SparklesIcon,
+  BuildingOfficeIcon,
+  BeakerIcon,
+  CakeIcon,
+  BookOpenIcon,
+  HomeIcon,
+  FireIcon,
+  ShoppingBagIcon,
 } from '@heroicons/react/24/outline'
 import clsx from 'clsx'
 
-// Categories for filtering
-const categories = [
-  'All',
-  'Social Media',
-  'Branding',
-  'Photography',
-  'Video',
-  'Copywriting',
-  'Content Strategy',
-  'Campaign Management'
-]
-
-// Industries data
-const industries = [
+// Brands data
+const brands = [
   {
-    name: 'Automotive Care & Maintenance',
-    description: 'Creating engaging content for automotive care products and services.',
-    image: '/images/industries/automotive.jpg',
-    socialLinks: {
-      facebook: 'https://facebook.com/automotive-page',
-      instagram: 'https://instagram.com/automotive-page'
-    },
-    gradient: 'from-blue-500 to-cyan-500',
-    icon: RocketLaunchIcon
-  },
-  {
-    name: 'Air Fresheners & Fragrances',
-    description: 'Developing content strategies for fragrance and air care products.',
-    image: '/images/industries/fragrance.jpg',
-    socialLinks: {
-      facebook: 'https://facebook.com/fragrance-page',
-      instagram: 'https://instagram.com/fragrance-page'
-    },
-    gradient: 'from-purple-500 to-pink-500',
-    icon: HeartIcon
-  },
-  {
-    name: 'Construction & Sealants',
-    description: 'Marketing solutions for construction materials and sealant products.',
-    image: '/images/industries/construction.jpg',
-    socialLinks: {
-      facebook: 'https://facebook.com/construction-page',
-      instagram: 'https://instagram.com/construction-page'
-    },
+    name: 'PIT-KSA',
+    description: 'Automotive maintenance and care',
     gradient: 'from-orange-500 to-red-500',
-    icon: StarIcon
+    icon: WrenchScrewdriverIcon,
+    imageCount: 4
   },
   {
-    name: 'Food & Beverages',
-    description: 'Crafting appetizing content that drives engagement and sales.',
-    image: '/images/industries/food.jpg',
-    socialLinks: {
-      facebook: 'https://facebook.com/food-page',
-      instagram: 'https://instagram.com/food-page'
-    },
+    name: 'Milva',
+    description: 'Car care products and accessories',
+    gradient: 'from-blue-500 to-cyan-500',
+    icon: WrenchScrewdriverIcon,
+    imageCount: 4
+  },
+  {
+    name: 'Fogg',
+    description: 'Premium fragrances and perfumes',
+    gradient: 'from-purple-500 to-pink-500',
+    icon: SparklesIcon,
+    imageCount: 4
+  },
+  {
+    name: 'United',
+    description: 'Construction and building materials',
     gradient: 'from-green-500 to-teal-500',
-    icon: RocketLaunchIcon
+    icon: BeakerIcon,
+    imageCount: 4
   },
   {
-    name: 'Health & Fitness Supplements',
-    description: 'Promoting wellness through dynamic content strategies.',
-    image: '/images/industries/fitness.jpg',
-    socialLinks: {
-      facebook: 'https://facebook.com/fitness-page',
-      instagram: 'https://instagram.com/fitness-page'
-    },
+    name: 'Sealfix',
+    description: 'Professional sealants and adhesives',
     gradient: 'from-indigo-500 to-violet-500',
-    icon: HeartIcon
+    icon: BeakerIcon,
+    imageCount: 4
   },
   {
-    name: 'Perfumes & Cosmetics',
-    description: 'Elegant content creation for beauty and fragrance brands.',
-    image: '/images/industries/cosmetics.jpg',
-    socialLinks: {
-      facebook: 'https://facebook.com/cosmetics-page',
-      instagram: 'https://instagram.com/cosmetics-page'
-    },
+    name: 'Vaxxol',
+    description: 'Automotive care solutions',
     gradient: 'from-pink-500 to-rose-500',
-    icon: StarIcon
+    icon: WrenchScrewdriverIcon,
+    imageCount: 4
   },
   {
-    name: 'Retail & Supermarkets',
-    description: 'Comprehensive marketing for retail businesses.',
-    image: '/images/industries/retail.jpg',
-    socialLinks: {
-      facebook: 'https://facebook.com/retail-page',
-      instagram: 'https://instagram.com/retail-page'
-    },
-    gradient: 'from-cyan-500 to-blue-500',
-    icon: RocketLaunchIcon
+    name: 'جزارة حجازي',
+    description: 'Premium meat and butchery',
+    gradient: 'from-rose-500 to-pink-500',
+    icon: CakeIcon,
+    imageCount: 3
   },
   {
-    name: 'Business Services',
-    description: 'Strategic content for professional service providers.',
-    image: '/images/industries/business.jpg',
-    socialLinks: {
-      facebook: 'https://facebook.com/business-page',
-      instagram: 'https://instagram.com/business-page'
-    },
-    gradient: 'from-emerald-500 to-teal-500',
-    icon: StarIcon
+    name: 'جزارة مدينة الزقم',
+    description: 'Quality meat products',
+    gradient: 'from-blue-500 to-indigo-500',
+    icon: CakeIcon,
+    imageCount: 4
+  },
+  {
+    name: 'الرحيق المختوم',
+    description: 'Religious and educational content',
+    gradient: 'from-indigo-500 to-blue-500',
+    icon: BookOpenIcon,
+    imageCount: 10
+  },
+  {
+    name: 'معرض الفجر للسيراميك',
+    description: 'Premium ceramic and interior solutions',
+    gradient: 'from-amber-500 to-yellow-500',
+    icon: HomeIcon,
+    imageCount: 4
+  },
+  {
+    name: 'Muscle Pump',
+    description: 'Fitness supplements and nutrition',
+    gradient: 'from-red-500 to-orange-500',
+    icon: FireIcon,
+    imageCount: 4
+  },
+  {
+    name: 'Mega Store',
+    description: 'Multi-category retail store',
+    gradient: 'from-emerald-500 to-green-500',
+    icon: ShoppingBagIcon,
+    imageCount: 2
+  },
+  {
+    name: 'Enter Computer',
+    description: 'Technology and computer retail',
+    gradient: 'from-sky-500 to-blue-500',
+    icon: ShoppingBagIcon,
+    imageCount: 4
+  },
+  {
+    name: 'Pyramids',
+    description: 'Multi-category retail solutions',
+    gradient: 'from-amber-500 to-yellow-500',
+    icon: ShoppingBagIcon,
+    imageCount: 4
+  },
+  {
+    name: 'الذهبية',
+    description: 'Driving licensing provider',
+    gradient: 'from-yellow-500 to-amber-500',
+    icon: BuildingOfficeIcon,
+    imageCount: 4
+  },
+  {
+    name: 'محمصة أولاد كامل',
+    description: 'Premium coffee and nuts retail',
+    gradient: 'from-orange-500 to-amber-500',
+    icon: ShoppingBagIcon,
+    imageCount: 4
+  },
+  {
+    name: 'فتح الله للعطور',
+    description: 'Luxury fragrances and perfumes',
+    gradient: 'from-purple-500 to-pink-500',
+    icon: SparklesIcon,
+    imageCount: 4
+  },
+  {
+    name: 'Elite',
+    description: 'Real estate and investment solutions',
+    gradient: 'from-blue-500 to-indigo-500',
+    icon: BuildingOfficeIcon,
+    imageCount: 4
+  },
+  {
+    name: 'Dr Mohamed Hamed Yehia',
+    description: 'Professional medical services',
+    gradient: 'from-teal-500 to-emerald-500',
+    icon: BuildingOfficeIcon,
+    imageCount: 4
+  },
+  {
+    name: 'Ice Cream Lebnan',
+    description: 'Premium ice cream and desserts',
+    gradient: 'from-blue-400 to-cyan-500',
+    icon: ShoppingBagIcon,
+    imageCount: 4
+  },
+  {
+    name: 'Jelaty Lebnan (New Branding)',
+    description: 'Artisanal ice cream and desserts',
+    gradient: 'from-cyan-500 to-blue-400',
+    icon: ShoppingBagIcon,
+    imageCount: 2
   }
-]
-
-// Work/Posts data
-const posts = [
-  {
-    id: 1,
-    title: 'Brand Campaign',
-    category: 'Branding',
-    industry: 'Automotive Care',
-    image: '/images/work/post1.jpg',
-    description: 'Comprehensive brand identity campaign showcasing product excellence.',
-    stats: {
-      engagement: '85%',
-      reach: '50K+',
-      clicks: '2.5K'
-    },
-    socialLink: 'https://facebook.com/post1'
-  },
-  // Add more posts here
 ]
 
 const fadeInUp = {
@@ -144,11 +174,6 @@ const fadeInUp = {
     opacity: 1, 
     y: 0,
     transition: { duration: 0.5 }
-  },
-  exit: {
-    opacity: 0,
-    y: -20,
-    transition: { duration: 0.3 }
   }
 }
 
@@ -164,15 +189,11 @@ const container = {
 }
 
 export default function WorkPage() {
-  const [selectedCategory, setSelectedCategory] = useState('All')
-  const [selectedIndustry, setSelectedIndustry] = useState('All')
+  const [selectedIndustry, setSelectedIndustry] = useState<string>('all')
 
-  const filteredPosts = posts.filter(post => {
-    if (selectedCategory === 'All' && selectedIndustry === 'All') return true
-    if (selectedCategory === 'All') return post.industry === selectedIndustry
-    if (selectedIndustry === 'All') return post.category === selectedCategory
-    return post.category === selectedCategory && post.industry === selectedIndustry
-  })
+  const handleIndustryChange = (industry: string) => {
+    setSelectedIndustry(industry)
+  }
 
   return (
     <>
@@ -210,66 +231,144 @@ export default function WorkPage() {
         {/* Industries Section */}
         <section className="py-24 bg-gray-50 dark:bg-gray-900">
           <div className="container">
-            <motion.h2 
-              className="heading-2 text-center mb-16"
+            <motion.div 
+              className="text-center mb-16"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              Industries I Work With
-            </motion.h2>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {industries.map((industry) => (
+              <h2 className="heading-2">Industries I Work With</h2>
+              <p className="mt-4 text-lg leading-8 text-gray-600 dark:text-gray-300">
+                Creating impactful content across diverse sectors
+              </p>
+            </motion.div>
+
+            <motion.div 
+              className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6"
+              variants={container}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
+              {[
+                {
+                  name: 'Car Care',
+                  description: 'Professional automotive care and maintenance solutions',
+                  gradient: 'from-blue-500 to-cyan-500',
+                  icon: WrenchScrewdriverIcon,
+                  brands: ['Sealfix', 'Vaxxol']
+                },
+                {
+                  name: 'Fragrances',
+                  description: 'Premium perfumes and beauty products',
+                  gradient: 'from-purple-500 to-pink-500',
+                  icon: SparklesIcon,
+                  brands: ['Milva', 'Fogg', 'فتح الله للعطور']
+                },
+                {
+                  name: 'Construction',
+                  description: 'Building and construction solutions',
+                  gradient: 'from-green-500 to-teal-500',
+                  icon: BuildingOfficeIcon,
+                  brands: ['PIT-KSA']
+                },
+                {
+                  name: 'Chemicals',
+                  description: 'Industrial chemicals and solutions',
+                  gradient: 'from-green-500 to-teal-500',
+                  icon: BeakerIcon,
+                  brands: ['United']
+                },
+                {
+                  name: 'Food & Beverage',
+                  description: 'Quality food products and services',
+                  gradient: 'from-indigo-500 to-violet-500',
+                  icon: CakeIcon,
+                  brands: ['جزارة حجازي', 'جزارة مدينة الزقم', 'الرحيق المختوم']
+                },
+                {
+                  name: 'Home & Interior Design',
+                  description: 'Premium home and interior solutions',
+                  gradient: 'from-amber-500 to-yellow-500',
+                  icon: HomeIcon,
+                  brands: ['معرض الفجر للسيراميك']
+                },
+                {
+                  name: 'Fitness',
+                  description: 'Fitness and nutrition products',
+                  gradient: 'from-red-500 to-orange-500',
+                  icon: FireIcon,
+                  brands: ['Muscle Pump']
+                },
+                {
+                  name: 'Retail',
+                  description: 'Multi-category and technology retail solutions',
+                  gradient: 'from-emerald-500 to-green-500',
+                  icon: ShoppingBagIcon,
+                  brands: ['Mega Store', 'Enter Computer', 'Pyramids', 'محمصة أولاد كامل', 'Ice Cream Lebnan', 'Jelaty Lebnan (New Branding)']
+                },
+                {
+                  name: 'Driving Services',
+                  description: 'Professional driving licensing and training',
+                  gradient: 'from-yellow-500 to-amber-500',
+                  icon: BuildingOfficeIcon,
+                  brands: ['الذهبية']
+                },
+                {
+                  name: 'Real Estate & Investments',
+                  description: 'Property and investment solutions',
+                  gradient: 'from-blue-500 to-indigo-500',
+                  icon: BuildingOfficeIcon,
+                  brands: ['Elite']
+                },
+                {
+                  name: 'Medical Services',
+                  description: 'Professional healthcare and medical services',
+                  gradient: 'from-teal-500 to-emerald-500',
+                  icon: BuildingOfficeIcon,
+                  brands: ['Dr Mohamed Hamed Yehia']
+                }
+              ].map((industry) => (
                 <motion.div
                   key={industry.name}
-                  className="group relative"
                   variants={fadeInUp}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
+                  className="group relative"
                   whileHover={{ y: -5 }}
+                  transition={{ duration: 0.2 }}
                 >
-                  <div className={`absolute -inset-0.5 bg-gradient-to-r ${industry.gradient} rounded-2xl blur opacity-25 group-hover:opacity-100 transition duration-300`} />
-                  <div className="relative bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
-                    <div className="flex items-center gap-4 mb-4">
-                      <div className={`p-3 rounded-xl bg-gradient-to-br ${industry.gradient}`}>
-                        <industry.icon className="h-6 w-6 text-white" />
-                      </div>
-                      <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
-                        {industry.name}
-                      </h3>
+                  <div className="absolute -inset-0.5 bg-gradient-to-r from-primary-500/30 to-secondary-500/30 rounded-xl blur opacity-0 group-hover:opacity-100 transition-all duration-300" />
+                  <div className="relative bg-white dark:bg-gray-800 p-6 rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.08)] dark:shadow-[0_4px_12px_rgba(0,0,0,0.2)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.12)] dark:hover:shadow-[0_8px_24px_rgba(0,0,0,0.24)] transition-all duration-300">
+                    <div className={clsx(
+                      'mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-r',
+                      industry.gradient
+                    )}>
+                      <industry.icon className="h-6 w-6 text-white" />
                     </div>
-                    <p className="text-gray-600 dark:text-gray-300 mb-6">
+                    <h3 className="text-center font-medium text-gray-900 dark:text-white mb-2">
+                      {industry.name}
+                    </h3>
+                    <p className="text-center text-sm text-gray-600 dark:text-gray-300">
                       {industry.description}
                     </p>
-                    <div className="flex gap-4">
-                      <a
-                        href={industry.socialLinks.facebook}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
-                      >
-                        Facebook
-                      </a>
-                      <a
-                        href={industry.socialLinks.instagram}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-pink-600 hover:text-pink-700 dark:text-pink-400 dark:hover:text-pink-300"
-                      >
-                        Instagram
-                      </a>
+                    <div className="mt-3 flex flex-wrap justify-center gap-1">
+                      {industry.brands.map((brand) => (
+                        <span
+                          key={brand}
+                          className="inline-flex items-center rounded-full bg-primary-50 dark:bg-gray-700 px-2 py-0.5 text-xs font-medium text-primary-600 dark:text-primary-400"
+                        >
+                          {brand}
+                        </span>
+                      ))}
                     </div>
                   </div>
                 </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
         </section>
 
-        {/* Clients/Brands Section */}
-        <section className="py-24 bg-white dark:bg-gray-800">
+        {/* Brands Section */}
+        <section className="py-24 bg-gray-50 dark:bg-gray-900">
           <div className="container">
             <motion.div 
               className="text-center mb-16"
@@ -290,71 +389,23 @@ export default function WorkPage() {
               whileInView="visible"
               viewport={{ once: true }}
             >
-              {[
-                { name: 'Brand 1', logo: '/logos/brand1.jpg' },
-                { name: 'Brand 2', logo: '/logos/brand2.jpg' },
-                { name: 'Brand 3', logo: '/logos/brand3.jpg' },
-                { name: 'Brand 4', logo: '/logos/brand4.jpg' },
-                { name: 'Brand 5', logo: '/logos/brand5.jpg' },
-                { name: 'Brand 6', logo: '/logos/brand6.jpg' },
-                { name: 'Brand 7', logo: '/logos/brand7.jpg' },
-                { name: 'Brand 8', logo: '/logos/brand8.jpg' },
-                { name: 'Brand 9', logo: '/logos/brand9.jpg' },
-                { name: 'Brand 10', logo: '/logos/brand10.jpg' },
-                { name: 'Brand 11', logo: '/logos/brand11.jpg' },
-                { name: 'Brand 12', logo: '/logos/brand12.jpg' },
-                { name: 'Brand 13', logo: '/logos/brand13.jpg' },
-                { name: 'Brand 14', logo: '/logos/brand14.jpg' },
-                { name: 'Brand 15', logo: '/logos/brand15.jpg' },
-                { name: 'Brand 16', logo: '/logos/brand16.jpg' },
-                { name: 'Brand 17', logo: '/logos/brand17.jpg' },
-                { name: 'Brand 18', logo: '/logos/brand18.jpg' },
-                { name: 'Brand 19', logo: '/logos/brand19.jpg' },
-                { name: 'Brand 20', logo: '/logos/brand20.jpg' }
-              ].map((brand, index) => (
+              {Array.from({ length: 20 }, (_, i) => (
                 <motion.div
-                  key={brand.name}
+                  key={`brand${i + 1}`}
                   variants={fadeInUp}
                   className="group relative"
                   whileHover={{ y: -5 }}
                   transition={{ duration: 0.2 }}
                 >
-                  {/* Gradient border effect */}
-                  <div 
-                    className="absolute -inset-0.5 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-2xl opacity-0 group-hover:opacity-100 blur transition duration-300"
-                    style={{
-                      background: `linear-gradient(${index * 20}deg, var(--tw-gradient-from), var(--tw-gradient-to))`,
-                    }}
-                  />
-                  
-                  {/* Card content */}
-                  <div className="relative bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
-                    <div className="relative h-24 w-full flex items-center justify-center">
-                      {/* Placeholder with gradient background */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-700 dark:to-gray-800 rounded-lg opacity-50" />
-                      
-                      {/* Brand name (shown when no image) */}
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <span className="text-gray-400 dark:text-gray-500 text-sm font-medium">
-                          {brand.name}
-                        </span>
-                      </div>
-                      
-                      {/* Image with hover effect */}
-                      <div className="relative w-full h-full">
-                        <Image
-                          src={brand.logo}
-                          alt={brand.name}
-                          fill
-                          className="object-contain filter transition-all duration-300 group-hover:brightness-110 group-hover:contrast-110"
-                          onError={(e: any) => {
-                            e.target.style.display = 'none'
-                          }}
-                        />
-                      </div>
-                      
-                      {/* Hover overlay */}
-                      <div className="absolute inset-0 bg-primary-500/0 group-hover:bg-primary-500/5 rounded-lg transition-colors duration-300" />
+                  <div className="absolute -inset-0.5 bg-gradient-to-r from-primary-500/50 to-secondary-500/50 rounded-xl blur opacity-0 group-hover:opacity-100 transition-all duration-300" />
+                  <div className="relative bg-white dark:bg-gray-800 p-6 rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.08)] dark:shadow-[0_4px_12px_rgba(0,0,0,0.2)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.12)] dark:hover:shadow-[0_8px_24px_rgba(0,0,0,0.24)] transition-all duration-300">
+                    <div className="relative h-24 w-full">
+                      <Image
+                        src={`/logos/brand${i + 1}.jpg`}
+                        alt={`Brand ${i + 1}`}
+                        fill
+                        className="object-contain transition-transform duration-300 group-hover:scale-105"
+                      />
                     </div>
                   </div>
                 </motion.div>
@@ -363,125 +414,141 @@ export default function WorkPage() {
           </div>
         </section>
 
-        {/* Filter Section */}
-        <section className="py-12 bg-white dark:bg-gray-800">
+        {/* Samples of My Work */}
+        <section className="py-24 bg-gray-50 dark:bg-gray-900">
           <div className="container">
-            <div className="flex flex-col md:flex-row justify-between items-center gap-6 mb-12">
-              {/* Category Filter */}
+            <motion.div 
+              className="text-center mb-16"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="heading-2">Samples of My Work</h2>
+              <p className="mt-4 text-lg leading-8 text-gray-600 dark:text-gray-300">
+                A showcase of my creative content and campaigns
+              </p>
+            </motion.div>
+
+            {/* Industry Filter */}
+            <div className="max-w-7xl mx-auto mb-12">
               <div className="flex flex-wrap justify-center gap-3">
-                {categories.map((category) => (
+                <motion.button
+                  onClick={() => handleIndustryChange('all')}
+                  className={clsx(
+                    'px-4 py-2 rounded-full text-sm font-medium transition-all duration-300',
+                    selectedIndustry === 'all'
+                      ? 'bg-primary-600 text-white shadow-lg'
+                      : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'
+                  )}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  All Brands
+                </motion.button>
+                {brands.map((brand) => (
                   <motion.button
-                    key={category}
-                    onClick={() => setSelectedCategory(category)}
+                    key={brand.name}
+                    onClick={() => handleIndustryChange(brand.name)}
                     className={clsx(
-                      'px-6 py-2 rounded-full font-medium transition-all duration-300',
-                      selectedCategory === category
-                        ? 'bg-primary-600 text-white shadow-lg dark:bg-primary-500'
-                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600'
+                      'px-4 py-2 rounded-full text-sm font-medium transition-all duration-300',
+                      selectedIndustry === brand.name
+                        ? `bg-gradient-to-r ${brand.gradient} text-white shadow-lg`
+                        : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'
                     )}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    {category}
+                    {brand.name}
                   </motion.button>
                 ))}
               </div>
-
-              {/* Industry Filter */}
-              <select
-                value={selectedIndustry}
-                onChange={(e) => setSelectedIndustry(e.target.value)}
-                className="px-4 py-2 rounded-lg border border-gray-200 bg-white text-gray-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-300"
-              >
-                <option value="All">All Industries</option>
-                {industries.map((industry) => (
-                  <option key={industry.name} value={industry.name}>
-                    {industry.name}
-                  </option>
-                ))}
-              </select>
             </div>
 
-            {/* Posts Grid */}
-            <AnimatePresence mode="wait">
-              <motion.div
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-                layout
-              >
-                {filteredPosts.map((post) => (
+            <div className="max-w-7xl mx-auto space-y-10">
+              {/* Work Cards */}
+              {brands.map((brand) => (
+                Array.from({ length: brand.imageCount }, (_, i) => (
                   <motion.div
-                    key={post.id}
-                    layout
-                    variants={fadeInUp}
-                    initial="hidden"
-                    animate="visible"
-                    exit="exit"
-                    className="group relative bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
+                    key={`${brand.name}-${i}`}
+                    className="group relative"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    whileHover={{ y: -5 }}
+                    transition={{ duration: 0.3 }}
+                    style={{ 
+                      display: selectedIndustry === 'all' || selectedIndustry === brand.name 
+                        ? 'block' 
+                        : 'none' 
+                    }}
                   >
-                    <div className="relative h-64">
-                      <Image
-                        src={post.image}
-                        alt={post.title}
-                        fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-110"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                      <div className="absolute bottom-4 left-4 right-4">
-                        <span className="inline-block px-3 py-1 text-sm font-medium text-white bg-primary-600/90 rounded-full mb-2">
-                          {post.category}
+                    {/* Card Content */}
+                    <div className="relative bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-[0_4px_12px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.1)] dark:shadow-lg dark:hover:shadow-xl transition-all duration-500">
+                      {/* Brand Tag */}
+                      <div className="absolute top-4 left-4 z-20">
+                        <span className={clsx(
+                          'px-4 py-1.5 bg-gradient-to-r text-white text-xs font-medium rounded-full shadow-sm',
+                          brand.gradient
+                        )}>
+                          {brand.name}
                         </span>
-                        <h3 className="text-xl font-semibold text-white mb-1">
-                          {post.title}
-                        </h3>
-                        <p className="text-sm text-white/90">{post.industry}</p>
                       </div>
-                    </div>
-                    <div className="p-6">
-                      <p className="text-gray-600 dark:text-gray-300 mb-4">
-                        {post.description}
-                      </p>
-                      <div className="grid grid-cols-3 gap-4 mb-4">
-                        <div className="text-center">
-                          <div className="text-lg font-semibold text-primary-600 dark:text-primary-400">
-                            {post.stats.engagement}
+
+                      {/* Images Container */}
+                      <div className="p-3 pt-14">
+                        <div className="grid grid-cols-2 gap-3">
+                          {/* Post Image */}
+                          <div className="relative overflow-hidden rounded-xl bg-gradient-to-br from-gray-100 to-gray-50 dark:from-gray-800 dark:to-gray-900 shadow-sm">
+                            <div className="aspect-[3/4] w-full">
+                              <Image
+                                src={`/posts-images/${brand.name}/${i + 1}.jpg`}
+                                alt={`${brand.name} Post Image ${i + 1}`}
+                                fill
+                                sizes="(max-width: 768px) 100vw, 50vw"
+                                className="object-contain w-full h-full transition-all duration-500 group-hover:scale-105"
+                                style={{ objectFit: 'contain' }}
+                              />
+                              {/* Image Overlay */}
+                              <div className="absolute inset-0 bg-gradient-to-t from-gray-900/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                            </div>
                           </div>
-                          <div className="text-sm text-gray-500 dark:text-gray-400">
-                            Engagement
-                          </div>
-                        </div>
-                        <div className="text-center">
-                          <div className="text-lg font-semibold text-primary-600 dark:text-primary-400">
-                            {post.stats.reach}
-                          </div>
-                          <div className="text-sm text-gray-500 dark:text-gray-400">
-                            Reach
-                          </div>
-                        </div>
-                        <div className="text-center">
-                          <div className="text-lg font-semibold text-primary-600 dark:text-primary-400">
-                            {post.stats.clicks}
-                          </div>
-                          <div className="text-sm text-gray-500 dark:text-gray-400">
-                            Clicks
+                          {/* Content Image */}
+                          <div className="relative overflow-hidden rounded-xl bg-gradient-to-br from-gray-100 to-gray-50 dark:from-gray-800 dark:to-gray-900 shadow-sm">
+                            <div className="aspect-[3/4] w-full">
+                              <Image
+                                src={`/posts-content-images/${brand.name}/${i + 1}.jpg`}
+                                alt={`${brand.name} Post Content ${i + 1}`}
+                                fill
+                                sizes="(max-width: 768px) 100vw, 50vw"
+                                className="object-contain w-full h-full transition-all duration-500 group-hover:scale-105"
+                                style={{ objectFit: 'contain' }}
+                              />
+                              {/* Image Overlay */}
+                              <div className="absolute inset-0 bg-gradient-to-t from-gray-900/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                            </div>
                           </div>
                         </div>
                       </div>
-                      <a
-                        href={post.socialLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300"
-                      >
-                        View Post
-                        <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                        </svg>
-                      </a>
+
+                      {/* Inner Border */}
+                      <div className="absolute inset-[2px] border border-gray-200/80 dark:border-gray-700/50 rounded-2xl pointer-events-none" />
                     </div>
+
+                    {/* Decorative Border */}
+                    <div className={clsx(
+                      "absolute -inset-[2px] bg-gradient-to-r rounded-2xl opacity-0 group-hover:opacity-100 -z-10 blur-[2px] transition-all duration-500",
+                      brand.gradient.replace('from-', 'from-[var(--tw-gradient-from)]/20 ').replace('to-', 'via-[var(--tw-gradient-from)]/20 to-[var(--tw-gradient-to)]/20')
+                    )} />
+
+                    {/* Additional Glow Effect */}
+                    <div className={clsx(
+                      "absolute -inset-[4px] bg-gradient-to-r rounded-2xl opacity-0 group-hover:opacity-100 -z-20 blur-xl transition-all duration-500",
+                      brand.gradient.replace('from-', 'from-[var(--tw-gradient-from)]/10 ').replace('to-', 'via-[var(--tw-gradient-from)]/10 to-[var(--tw-gradient-to)]/10')
+                    )} />
                   </motion.div>
-                ))}
-              </motion.div>
-            </AnimatePresence>
+                ))
+              ))}
+            </div>
           </div>
         </section>
       </main>
