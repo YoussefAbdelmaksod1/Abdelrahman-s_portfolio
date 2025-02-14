@@ -15,6 +15,7 @@ import {
   BriefcaseIcon,
   SparklesIcon,
 } from '@heroicons/react/24/outline'
+import clsx from 'clsx'
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
@@ -220,7 +221,7 @@ export default function HomePage() {
               </motion.div>
               <h2 className="heading-2">Why Choose Me?</h2>
               <p className="mt-4 text-lg leading-8 text-gray-600 dark:text-gray-300">
-                Here's how I can help you learn and grow
+                Elevate your brand with strategic content creation and marketing expertise
               </p>
             </motion.div>
 
@@ -323,17 +324,18 @@ export default function HomePage() {
               </p>
             </motion.div>
 
-            <div className="relative mt-16 max-w-5xl mx-auto">
-              <div className="absolute left-1/2 h-full w-1 -translate-x-1/2 bg-gradient-to-b from-primary-200 via-primary-400 to-primary-600">
+            <div className="relative mt-16 max-w-5xl mx-auto px-4 sm:px-6">
+              {/* Mobile Timeline Line */}
+              <div className="absolute left-8 sm:left-1/2 h-full w-0.5 -translate-x-1/2 bg-gradient-to-b from-primary-200 via-primary-400 to-primary-600 dark:from-primary-300/50 dark:via-primary-500/50 dark:to-primary-700/50">
                 <motion.div 
-                  className="h-full w-full bg-gradient-to-b from-primary-600 via-primary-500 to-primary-400"
+                  className="h-full w-full bg-gradient-to-b from-primary-600 via-primary-500 to-primary-400 dark:from-primary-400 dark:via-primary-500 dark:to-primary-600"
                   initial={{ height: 0 }}
                   whileInView={{ height: "100%" }}
                   transition={{ duration: 1.5, ease: "easeOut" }}
                 />
               </div>
               
-              <div className="space-y-12">
+              <div className="space-y-8 sm:space-y-12">
                 {[
                   {
                     period: "Nov 2024 - Present",
@@ -401,55 +403,85 @@ export default function HomePage() {
                 ].map((item, index) => (
                   <motion.div
                     key={item.period}
-                    className={`flex ${index % 2 === 0 ? 'justify-start' : 'justify-end'} relative`}
+                    className={clsx(
+                      "relative flex flex-col sm:flex-row",
+                      index % 2 === 0 ? "sm:justify-start" : "sm:justify-end",
+                      "group"
+                    )}
                     initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                   >
                     <motion.div
-                      className="group relative w-[calc(50%-2rem)]"
+                      className={clsx(
+                        "group relative",
+                        "w-[calc(100%-3rem)] sm:w-[calc(50%-2rem)]",
+                        "ml-16 sm:ml-0",
+                        "transition-all duration-300"
+                      )}
                       whileHover={{ scale: 1.02 }}
                       transition={{ type: "spring", stiffness: 300 }}
                     >
-                      <div className={`absolute -inset-0.5 bg-gradient-to-r ${item.gradient} rounded-2xl blur opacity-25 group-hover:opacity-100 transition duration-300`} />
-                      <div className="relative bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg">
-                        <div className="flex items-center gap-4 mb-3">
-                          <span className={`px-3 py-1 text-sm font-medium rounded-full bg-gradient-to-r ${item.gradient} text-white`}>
-                            {item.period}
-                          </span>
-                          <span className="text-sm text-gray-500 dark:text-gray-400">
-                            {item.type}
-                          </span>
-                        </div>
-                        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-1">
-                          {item.role}
-                        </h3>
-                        <p className="text-primary-600 dark:text-primary-400 font-medium mb-2">
-                          {item.company}
-                        </p>
-                        <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
-                          📍 {item.location}
-                        </p>
-                        <div className="flex flex-wrap gap-2">
-                          {item.skills.map((skill) => (
-                            <span
-                              key={skill}
-                              className="inline-flex items-center rounded-full bg-primary-50 dark:bg-gray-700 px-2.5 py-0.5 text-xs font-medium text-primary-600 dark:text-primary-400"
-                            >
-                              {skill}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                      <div className="absolute top-1/2 -translate-y-1/2 w-4 h-4">
+                      <div className={clsx(
+                        "absolute top-4 -translate-x-[calc(100%+1rem)]",
+                        "left-0 sm:translate-x-0",
+                        index % 2 === 0 
+                          ? "sm:right-0 sm:left-auto sm:translate-x-[calc(100%+1rem)]" 
+                          : "sm:left-0 sm:-translate-x-[calc(100%+1rem)]"
+                      )}>
                         <motion.div
-                          className={`absolute inset-0 bg-gradient-to-r ${item.gradient} rounded-full`}
+                          className={`w-8 h-8 rounded-full bg-gradient-to-r ${item.gradient} flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform duration-300`}
                           initial={{ scale: 0 }}
                           whileInView={{ scale: 1 }}
                           transition={{ delay: 0.2 }}
+                        >
+                          <div className="w-3 h-3 rounded-full bg-white group-hover:scale-90 transition-transform duration-300" />
+                        </motion.div>
+                        <motion.div
+                          className={clsx(
+                            "absolute top-1/2 h-0.5 bg-gradient-to-r",
+                            item.gradient,
+                            index % 2 === 0 
+                              ? "left-full sm:right-full sm:left-auto" 
+                              : "left-full",
+                            "w-4 sm:w-8 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                          )}
                         />
-                        <div className="absolute inset-1 bg-white dark:bg-gray-800 rounded-full" />
+                      </div>
+
+                      <div className="relative bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300">
+                        <div className={`absolute -inset-0.5 bg-gradient-to-r ${item.gradient} rounded-2xl opacity-20 group-hover:opacity-40 group-hover:blur-sm transition-all duration-300`} />
+                        
+                        <div className="relative">
+                          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4 mb-3 sm:mb-4">
+                            <span className={`inline-block px-2.5 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-semibold bg-gradient-to-r ${item.gradient} text-white shadow-sm group-hover:shadow-md transition-shadow duration-300`}>
+                              {item.period}
+                            </span>
+                            <span className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">
+                              {item.type}
+                            </span>
+                          </div>
+                          <h3 className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white mb-1 sm:mb-2 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-300">
+                            {item.role}
+                          </h3>
+                          <p className="text-sm sm:text-base text-primary-600 dark:text-primary-400 font-medium mb-1 sm:mb-2">
+                            {item.company}
+                          </p>
+                          <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mb-3 sm:mb-4">
+                            📍 {item.location}
+                          </p>
+                          <div className="flex flex-wrap gap-1.5 sm:gap-2">
+                            {item.skills.map((skill) => (
+                              <span
+                                key={skill}
+                                className="inline-flex items-center rounded-full bg-primary-50 dark:bg-gray-700 px-2 sm:px-2.5 py-0.5 text-[10px] sm:text-xs font-medium text-primary-600 dark:text-primary-400 group-hover:bg-primary-100 dark:group-hover:bg-gray-600 transition-colors duration-300"
+                              >
+                                {skill}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
                       </div>
                     </motion.div>
                   </motion.div>
