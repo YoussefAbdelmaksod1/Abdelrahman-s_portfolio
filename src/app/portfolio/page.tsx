@@ -500,31 +500,49 @@ export default function WorkPage() {
                           {/* Post Image */}
                           <div className="relative overflow-hidden rounded-xl bg-gradient-to-br from-gray-100 to-gray-50 dark:from-gray-800 dark:to-gray-900 shadow-sm">
                             <div className="aspect-[3/4] w-full">
+                              <div className="absolute inset-0 flex items-center justify-center bg-gray-100 dark:bg-gray-800">
+                                <div className="w-8 h-8 border-2 border-primary-500 rounded-full animate-spin border-t-transparent" />
+                              </div>
                               <Image
                                 src={`/posts-images/${brand.name}/${i + 1}.jpg`}
                                 alt={`${brand.name} Post Image ${i + 1}`}
                                 fill
                                 sizes="(max-width: 768px) 100vw, 50vw"
-                                className="object-contain w-full h-full transition-all duration-500 group-hover:scale-105"
+                                className="object-contain w-full h-full transition-all duration-500 group-hover:scale-105 z-10 relative"
                                 style={{ objectFit: 'contain' }}
+                                priority={i === 0}
+                                quality={75}
+                                onError={(e: any) => {
+                                  console.error(`Error loading image: ${brand.name}/${i + 1}.jpg`);
+                                  e.target.style.display = 'none';
+                                }}
                               />
                               {/* Image Overlay */}
-                              <div className="absolute inset-0 bg-gradient-to-t from-gray-900/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                              <div className="absolute inset-0 bg-gradient-to-t from-gray-900/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20" />
                             </div>
                           </div>
                           {/* Content Image */}
                           <div className="relative overflow-hidden rounded-xl bg-gradient-to-br from-gray-100 to-gray-50 dark:from-gray-800 dark:to-gray-900 shadow-sm">
                             <div className="aspect-[3/4] w-full">
+                              <div className="absolute inset-0 flex items-center justify-center bg-gray-100 dark:bg-gray-800">
+                                <div className="w-8 h-8 border-2 border-primary-500 rounded-full animate-spin border-t-transparent" />
+                              </div>
                               <Image
                                 src={`/posts-content-images/${brand.name}/${i + 1}.jpg`}
                                 alt={`${brand.name} Post Content ${i + 1}`}
                                 fill
                                 sizes="(max-width: 768px) 100vw, 50vw"
-                                className="object-contain w-full h-full transition-all duration-500 group-hover:scale-105"
+                                className="object-contain w-full h-full transition-all duration-500 group-hover:scale-105 z-10 relative"
                                 style={{ objectFit: 'contain' }}
+                                priority={i === 0}
+                                quality={75}
+                                onError={(e: any) => {
+                                  console.error(`Error loading content image: ${brand.name}/${i + 1}.jpg`);
+                                  e.target.style.display = 'none';
+                                }}
                               />
                               {/* Image Overlay */}
-                              <div className="absolute inset-0 bg-gradient-to-t from-gray-900/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                              <div className="absolute inset-0 bg-gradient-to-t from-gray-900/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20" />
                             </div>
                           </div>
                         </div>
