@@ -606,9 +606,9 @@ export default function ProjectsPage() {
 
                       {/* Images Container */}
                       <div className="p-3 pt-14">
-                        <div className="grid grid-cols-2 gap-3">
+                        <div className="flex gap-3">
                           {/* Post Image */}
-                          <div className="relative overflow-hidden rounded-xl bg-gradient-to-br from-gray-100 to-gray-50 dark:from-gray-800 dark:to-gray-900 shadow-sm">
+                          <div className="relative overflow-hidden rounded-xl bg-gradient-to-br from-gray-100 to-gray-50 dark:from-gray-800 dark:to-gray-900 shadow-sm flex-1">
                             <div className="aspect-square w-full">
                               <div className="absolute inset-0 flex items-center justify-center bg-gray-100 dark:bg-gray-800">
                                 <div className="w-8 h-8 border-2 border-primary-500 rounded-full animate-spin border-t-transparent" />
@@ -632,32 +632,32 @@ export default function ProjectsPage() {
                               {/* Image Overlay */}
                               <div className="absolute inset-0 bg-gradient-to-t from-gray-900/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20" />
                             </div>
+                          </div>
 
-                            {/* Content Image */}
-                            <div className="relative overflow-hidden rounded-xl bg-gradient-to-br from-gray-100 to-gray-50 dark:from-gray-800 dark:to-gray-900 shadow-sm">
-                              <div className="aspect-square w-full">
-                                <div className="absolute inset-0 flex items-center justify-center bg-gray-100 dark:bg-gray-800">
-                                  <div className="w-8 h-8 border-2 border-primary-500 rounded-full animate-spin border-t-transparent" />
-                                </div>
-                                <div className="relative w-full h-full">
-                                  <Image
-                                    src={`/posts-content-images/${brand.name}/${i + 1}.jpg`}
-                                    alt={`${brand.name} Content Image ${i + 1}`}
-                                    fill
-                                    sizes="(max-width: 768px) 100vw, 50vw"
-                                    className="object-contain p-2 transition-all duration-500 group-hover:scale-105"
-                                    priority={i === 0}
-                                    quality={75}
-                                    onError={(e: any) => {
-                                      console.log(`Failed to load content image: ${brand.name}/${i + 1}.jpg`);
-                                      e.currentTarget.src = '/images/placeholder.jpg';
-                                      e.currentTarget.classList.add('opacity-50');
-                                    }}
-                                  />
-                                </div>
-                                {/* Image Overlay */}
-                                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20" />
+                          {/* Content Image */}
+                          <div className="relative overflow-hidden rounded-xl bg-gradient-to-br from-gray-100 to-gray-50 dark:from-gray-800 dark:to-gray-900 shadow-sm flex-1">
+                            <div className="aspect-square w-full">
+                              <div className="absolute inset-0 flex items-center justify-center bg-gray-100 dark:bg-gray-800">
+                                <div className="w-8 h-8 border-2 border-primary-500 rounded-full animate-spin border-t-transparent" />
                               </div>
+                              <div className="relative w-full h-full">
+                                <Image
+                                  src={`/posts-content-images/${brand.name}/${i + 1}.jpg`}
+                                  alt={`${brand.name} Content Image ${i + 1}`}
+                                  fill
+                                  sizes="(max-width: 768px) 100vw, 50vw"
+                                  className="object-contain p-2 transition-all duration-500 group-hover:scale-105"
+                                  priority={i === 0}
+                                  quality={75}
+                                  onError={(e: any) => {
+                                    console.log(`Failed to load content image: ${brand.name}/${i + 1}.jpg`);
+                                    e.currentTarget.src = '/images/placeholder.jpg';
+                                    e.currentTarget.classList.add('opacity-50');
+                                  }}
+                                />
+                              </div>
+                              {/* Image Overlay */}
+                              <div className="absolute inset-0 bg-gradient-to-t from-gray-900/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20" />
                             </div>
                           </div>
                         </div>
