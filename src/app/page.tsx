@@ -17,6 +17,30 @@ import {
 } from '@heroicons/react/24/outline'
 import clsx from 'clsx'
 
+// Social media links configuration
+const socialLinks = [
+  {
+    name: 'LinkedIn',
+    url: 'https://www.linkedin.com/in/abdelrahman-younes-?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app',
+    icon: '🔗'
+  },
+  {
+    name: 'Instagram',
+    url: 'https://instagram.com/abdelrahman',
+    icon: '📸'
+  },
+  {
+    name: 'Twitter',
+    url: 'https://twitter.com/abdelrahman',
+    icon: '🐦'
+  },
+  {
+    name: 'WhatsApp',
+    url: 'https://wa.me/201210233451',
+    icon: '💬'
+  }
+]
+
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
   visible: { 
