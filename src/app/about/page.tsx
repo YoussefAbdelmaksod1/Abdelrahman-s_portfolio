@@ -246,56 +246,205 @@ export default function AboutPage() {
                 <h2 className="heading-2 mb-8 text-center">Experience Highlights</h2>
                 <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-[0_4px_12px_rgba(0,0,0,0.08)] dark:shadow-[0_4px_12px_rgba(0,0,0,0.2)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.12)] dark:hover:shadow-[0_8px_24px_rgba(0,0,0,0.24)] transition-all duration-300">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div className="space-y-4">
-                      <h3 className="text-xl font-semibold text-primary-600 dark:text-primary-400">Focus Areas</h3>
-                      <ul className="space-y-2 text-gray-600 dark:text-gray-300">
-                        <li>• Content Creation</li>
-                        <li>• Social Media</li>
-                        <li>• Brand Building</li>
-                        <li>• Marketing Research</li>
-                        <li>• Digital Marketing Strategy</li>
-                        <li>• Visual Content Design</li>
-                        <li>• Campaign Management</li>
-                        <li>• Market Analysis</li>
-                      </ul>
+                    <div className="space-y-6">
+                      <div>
+                        <h3 className="text-xl font-semibold text-primary-600 dark:text-primary-400 mb-4">Focus Areas</h3>
+                        <ul className="space-y-3">
+                          {[
+                            "Content Strategy Development",
+                            "Social Media Management",
+                            "Brand Storytelling",
+                            "Digital Marketing Campaigns",
+                            "Community Engagement"
+                          ].map((item) => (
+                            <motion.li
+                              key={item}
+                              className="flex items-center gap-2 text-gray-600 dark:text-gray-300"
+                              initial={{ opacity: 0, x: -20 }}
+                              whileInView={{ opacity: 1, x: 0 }}
+                              viewport={{ once: true }}
+                            >
+                              <SparklesIcon className="h-5 w-5 text-primary-500" />
+                              {item}
+                            </motion.li>
+                          ))}
+                        </ul>
+                      </div>
                     </div>
-                    <div className="space-y-4">
-                      <h3 className="text-xl font-semibold text-primary-600 dark:text-primary-400">Key Skills</h3>
-                      <ul className="space-y-2 text-gray-600 dark:text-gray-300">
-                        <li>• Creative Writing</li>
-                        <li>• Visual Storytelling</li>
-                        <li>• Content Strategy</li>
-                        <li>• Project Management</li>
-                        <li>• Analytics & Reporting</li>
-                        <li>• Client Communication</li>
-                        <li>• Team Leadership</li>
-                        <li>• Problem Solving</li>
-                      </ul>
+                    <div className="space-y-6">
+                      <div>
+                        <h3 className="text-xl font-semibold text-primary-600 dark:text-primary-400 mb-4">Industry Experience</h3>
+                        <ul className="space-y-3">
+                          {[
+                            "Automotive Care",
+                            "Health & Fitness",
+                            "E-commerce",
+                            "Food & Beverage",
+                            "Lifestyle Brands"
+                          ].map((item) => (
+                            <motion.li
+                              key={item}
+                              className="flex items-center gap-2 text-gray-600 dark:text-gray-300"
+                              initial={{ opacity: 0, x: -20 }}
+                              whileInView={{ opacity: 1, x: 0 }}
+                              viewport={{ once: true }}
+                            >
+                              <SparklesIcon className="h-5 w-5 text-primary-500" />
+                              {item}
+                            </motion.li>
+                          ))}
+                        </ul>
+                      </div>
                     </div>
                   </div>
                 </div>
               </motion.div>
 
-              {/* CTA Section */}
-              <motion.div 
-                className="text-center bg-gradient-to-r from-primary-600 to-primary-400 rounded-2xl p-12 shadow-xl"
+              {/* Brands & Insights Section */}
+              <motion.div
+                className="mb-24"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
               >
-                <h2 className="text-3xl font-bold text-white mb-4">Ready to Transform Your Brand?</h2>
-                <p className="text-white/90 text-lg mb-8">Let's create content that resonates and drives results</p>
-                <motion.div 
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                >
-                  <Link href="/contact" className="inline-flex items-center gap-2 bg-white text-primary-600 px-8 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-shadow">
-                    Start Your Journey
-                    <svg className="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
-                      <path fillRule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clipRule="evenodd" />
-                    </svg>
-                  </Link>
-                </motion.div>
+                <h2 className="heading-2 mb-8 text-center">Brand Impact</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                  {[
+                    {
+                      metric: "Engagement Rate",
+                      value: "5.8%",
+                      description: "Average engagement across platforms",
+                      gradient: "from-blue-500 to-cyan-500"
+                    },
+                    {
+                      metric: "Reach",
+                      value: "25K+",
+                      description: "Monthly content reach",
+                      gradient: "from-purple-500 to-pink-500"
+                    },
+                    {
+                      metric: "Content Performance",
+                      value: "92%",
+                      description: "Content meeting KPI targets",
+                      gradient: "from-orange-500 to-red-500"
+                    },
+                    {
+                      metric: "Growth Rate",
+                      value: "48%",
+                      description: "Average audience growth",
+                      gradient: "from-green-500 to-teal-500"
+                    }
+                  ].map((stat, index) => (
+                    <motion.div
+                      key={stat.metric}
+                      className="relative group bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg overflow-hidden"
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: index * 0.1 }}
+                      whileHover={{ y: -5 }}
+                    >
+                      <div className={`absolute -inset-0.5 bg-gradient-to-r ${stat.gradient} rounded-2xl opacity-20 group-hover:opacity-30 group-hover:blur-sm transition-all duration-300`} />
+                      <div className="relative">
+                        <h3 className="text-lg font-medium text-gray-600 dark:text-gray-300 mb-2">
+                          {stat.metric}
+                        </h3>
+                        <div className={`text-3xl font-bold bg-gradient-to-r ${stat.gradient} bg-clip-text text-transparent mb-2`}>
+                          {stat.value}
+                        </div>
+                        <p className="text-sm text-gray-500 dark:text-gray-400">
+                          {stat.description}
+                        </p>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+
+                {/* Featured Brands */}
+                <div className="mt-12 bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg">
+                  <h3 className="text-2xl font-semibold text-center mb-8">Featured Brand Collaborations</h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {[
+                      {
+                        name: "Car Care Pro",
+                        type: "Automotive",
+                        engagement: "6.2%",
+                        reach: "15K",
+                        posts: "48",
+                        gradient: "from-blue-500 to-cyan-500"
+                      },
+                      {
+                        name: "FitLife Supplements",
+                        type: "Health & Fitness",
+                        engagement: "5.5%",
+                        reach: "12K",
+                        posts: "36",
+                        gradient: "from-purple-500 to-pink-500"
+                      },
+                      {
+                        name: "Jelaty Lebnan",
+                        type: "Food & Beverage",
+                        engagement: "5.9%",
+                        reach: "18K",
+                        posts: "42",
+                        gradient: "from-orange-500 to-red-500"
+                      }
+                    ].map((brand) => (
+                      <motion.div
+                        key={brand.name}
+                        className="relative group bg-gray-50 dark:bg-gray-700/50 rounded-xl p-6"
+                        whileHover={{ scale: 1.02 }}
+                        transition={{ type: "spring", stiffness: 300 }}
+                      >
+                        <div className={`absolute -inset-0.5 bg-gradient-to-r ${brand.gradient} rounded-xl opacity-20 group-hover:opacity-30 group-hover:blur-sm transition-all duration-300`} />
+                        <div className="relative">
+                          <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">{brand.name}</h4>
+                          <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">{brand.type}</p>
+                          <div className="grid grid-cols-3 gap-4">
+                            <div>
+                              <div className="text-lg font-semibold text-primary-600 dark:text-primary-400">{brand.engagement}</div>
+                              <div className="text-xs text-gray-500 dark:text-gray-400">Engagement</div>
+                            </div>
+                            <div>
+                              <div className="text-lg font-semibold text-primary-600 dark:text-primary-400">{brand.reach}</div>
+                              <div className="text-xs text-gray-500 dark:text-gray-400">Avg. Reach</div>
+                            </div>
+                            <div>
+                              <div className="text-lg font-semibold text-primary-600 dark:text-primary-400">{brand.posts}</div>
+                              <div className="text-xs text-gray-500 dark:text-gray-400">Posts</div>
+                            </div>
+                          </div>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* CTA Section */}
+              <motion.div
+                className="text-center"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+              >
+                <div className="mx-auto max-w-3xl bg-gradient-to-r from-primary-50 to-secondary-50 dark:from-gray-800 dark:to-gray-700 p-8 rounded-2xl shadow-lg relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary-500/10 to-secondary-500/10 animate-pulse" />
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+                    Ready to Transform Your Brand?
+                  </h3>
+                  <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
+                    Let's create engaging content that resonates with your audience and drives real results.
+                  </p>
+                  <div className="flex items-center justify-center gap-4">
+                    <Link href="/contact" className="btn-primary">
+                      Start a Project
+                    </Link>
+                    <Link href="/portfolio" className="btn-outline">
+                      View My Work
+                    </Link>
+                  </div>
+                </div>
               </motion.div>
             </div>
           </div>

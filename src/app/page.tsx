@@ -299,6 +299,33 @@ export default function HomePage() {
                 </motion.div>
               ))}
             </div>
+
+            {/* CTA Section */}
+            <motion.div
+              className="mt-16 text-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+            >
+              <div className="mx-auto max-w-3xl bg-gradient-to-r from-primary-50 to-secondary-50 dark:from-gray-800 dark:to-gray-700 p-8 rounded-2xl shadow-lg relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-r from-primary-500/10 to-secondary-500/10 animate-pulse" />
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+                  Ready to Create Something Amazing?
+                </h3>
+                <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
+                  Let's collaborate and bring your vision to life with engaging content that resonates with your audience.
+                </p>
+                <div className="flex items-center justify-center gap-4">
+                  <Link href="/contact" className="btn-primary">
+                    Start a Project
+                  </Link>
+                  <Link href="/portfolio" className="btn-outline">
+                    View My Work
+                  </Link>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </section>
 
@@ -312,30 +339,34 @@ export default function HomePage() {
               viewport={{ once: true }}
             >
               <motion.div
-                className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-primary-100"
-                whileHover={{ scale: 1.1 }}
-                transition={{ type: "spring", stiffness: 200 }}
+                className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-r from-primary-100 to-secondary-100"
+                whileHover={{ scale: 1.1, rotate: 360 }}
+                transition={{ type: "spring", stiffness: 200, duration: 0.8 }}
               >
                 <BriefcaseIcon className="h-8 w-8 text-primary-600" />
               </motion.div>
-              <h2 className="heading-2">Work Experience</h2>
-              <p className="mt-4 text-lg leading-8 text-gray-600">
+              <h2 className="heading-2 bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent">My Journey</h2>
+              <p className="mt-4 text-lg leading-8 text-gray-600 dark:text-gray-300">
                 A track record of creating impactful content and managing successful campaigns
               </p>
             </motion.div>
 
             <div className="relative mt-16 max-w-5xl mx-auto px-4 sm:px-6">
-              {/* Mobile Timeline Line */}
-              <div className="absolute left-8 sm:left-1/2 h-full w-0.5 -translate-x-1/2 bg-gradient-to-b from-primary-200 via-primary-400 to-primary-600 dark:from-primary-300/50 dark:via-primary-500/50 dark:to-primary-700/50">
+              {/* Timeline Line with Gradient and Animation */}
+              <div className="absolute left-8 sm:left-1/2 h-full w-1 -translate-x-1/2">
                 <motion.div 
-                  className="h-full w-full bg-gradient-to-b from-primary-600 via-primary-500 to-primary-400 dark:from-primary-400 dark:via-primary-500 dark:to-primary-600"
-                  initial={{ height: 0 }}
+                  className="h-full w-full bg-gradient-to-b from-primary-600 via-primary-500 to-primary-400 rounded-full"
+                  initial={{ height: "0%" }}
                   whileInView={{ height: "100%" }}
+                  viewport={{ once: true }}
                   transition={{ duration: 1.5, ease: "easeOut" }}
-                />
+                >
+                  <div className="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-white via-white/50 to-transparent dark:from-gray-900 dark:via-gray-900/50" />
+                  <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-white via-white/50 to-transparent dark:from-gray-900 dark:via-gray-900/50" />
+                </motion.div>
               </div>
               
-              <div className="space-y-8 sm:space-y-12">
+              <div className="space-y-12">
                 {[
                   {
                     period: "Nov 2024 - Present",
@@ -408,10 +439,15 @@ export default function HomePage() {
                       index % 2 === 0 ? "sm:justify-start" : "sm:justify-end",
                       "group"
                     )}
-                    initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                    whileInView={{ opacity: 1, x: 0 }}
+                    initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50, y: 20 }}
+                    whileInView={{ opacity: 1, x: 0, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    transition={{ 
+                      duration: 0.5, 
+                      delay: index * 0.1,
+                      type: "spring",
+                      stiffness: 100
+                    }}
                   >
                     <motion.div
                       className={clsx(
@@ -420,8 +456,10 @@ export default function HomePage() {
                         "ml-16 sm:ml-0",
                         "transition-all duration-300"
                       )}
-                      whileHover={{ scale: 1.02 }}
-                      transition={{ type: "spring", stiffness: 300 }}
+                      whileHover={{ 
+                        scale: 1.02,
+                        transition: { type: "spring", stiffness: 300 }
+                      }}
                     >
                       <div className={clsx(
                         "absolute top-4 -translate-x-[calc(100%+1rem)]",
@@ -431,12 +469,12 @@ export default function HomePage() {
                           : "sm:left-0 sm:-translate-x-[calc(100%+1rem)]"
                       )}>
                         <motion.div
-                          className={`w-8 h-8 rounded-full bg-gradient-to-r ${item.gradient} flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform duration-300`}
-                          initial={{ scale: 0 }}
-                          whileInView={{ scale: 1 }}
-                          transition={{ delay: 0.2 }}
+                          className={`w-8 h-8 rounded-full bg-gradient-to-r ${item.gradient} flex items-center justify-center text-white shadow-lg group-hover:scale-125 transition-all duration-300`}
+                          initial={{ scale: 0, rotate: -180 }}
+                          whileInView={{ scale: 1, rotate: 0 }}
+                          transition={{ delay: 0.2, type: "spring" }}
                         >
-                          <div className="w-3 h-3 rounded-full bg-white group-hover:scale-90 transition-transform duration-300" />
+                          <div className="w-3 h-3 rounded-full bg-white group-hover:scale-75 transition-all duration-300" />
                         </motion.div>
                         <motion.div
                           className={clsx(
@@ -445,42 +483,60 @@ export default function HomePage() {
                             index % 2 === 0 
                               ? "left-full sm:right-full sm:left-auto" 
                               : "left-full",
-                            "w-4 sm:w-8 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                            "w-4 sm:w-8 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300"
                           )}
+                          initial={{ width: 0 }}
+                          whileInView={{ width: "2rem" }}
+                          transition={{ delay: 0.3 }}
                         />
                       </div>
 
-                      <div className="relative bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300">
-                        <div className={`absolute -inset-0.5 bg-gradient-to-r ${item.gradient} rounded-2xl opacity-20 group-hover:opacity-40 group-hover:blur-sm transition-all duration-300`} />
+                      <div className="relative bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300">
+                        <div className={`absolute -inset-0.5 bg-gradient-to-r ${item.gradient} rounded-2xl opacity-20 group-hover:opacity-30 group-hover:blur-sm transition-all duration-300`} />
                         
                         <div className="relative">
-                          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4 mb-3 sm:mb-4">
-                            <span className={`inline-block px-2.5 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-semibold bg-gradient-to-r ${item.gradient} text-white shadow-sm group-hover:shadow-md transition-shadow duration-300`}>
+                          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4 mb-4">
+                            <motion.span 
+                              className={`inline-block px-3 py-1 rounded-full text-sm font-semibold bg-gradient-to-r ${item.gradient} text-white shadow-sm group-hover:shadow-md transition-all duration-300`}
+                              whileHover={{ scale: 1.05 }}
+                            >
                               {item.period}
-                            </span>
-                            <span className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">
+                            </motion.span>
+                            <span className="text-sm text-gray-500 dark:text-gray-400 italic">
                               {item.type}
                             </span>
                           </div>
-                          <h3 className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white mb-1 sm:mb-2 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-300">
+                          <motion.h3 
+                            className="text-xl font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-300"
+                            whileHover={{ x: 5 }}
+                          >
                             {item.role}
-                          </h3>
-                          <p className="text-sm sm:text-base text-primary-600 dark:text-primary-400 font-medium mb-1 sm:mb-2">
+                          </motion.h3>
+                          <p className="text-base text-primary-600 dark:text-primary-400 font-medium mb-2">
                             {item.company}
                           </p>
-                          <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mb-3 sm:mb-4">
+                          <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
                             📍 {item.location}
                           </p>
-                          <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                            {item.skills.map((skill) => (
-                              <span
+                          <motion.div 
+                            className="flex flex-wrap gap-2"
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            transition={{ delay: 0.4 }}
+                          >
+                            {item.skills.map((skill, skillIndex) => (
+                              <motion.span
                                 key={skill}
-                                className="inline-flex items-center rounded-full bg-primary-50 dark:bg-gray-700 px-2 sm:px-2.5 py-0.5 text-[10px] sm:text-xs font-medium text-primary-600 dark:text-primary-400 group-hover:bg-primary-100 dark:group-hover:bg-gray-600 transition-colors duration-300"
+                                className="inline-flex items-center rounded-full bg-primary-50 dark:bg-gray-700 px-2.5 py-0.5 text-xs font-medium text-primary-600 dark:text-primary-400 group-hover:bg-primary-100 dark:group-hover:bg-gray-600 transition-all duration-300"
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
+                                transition={{ delay: 0.4 + skillIndex * 0.1 }}
+                                whileHover={{ scale: 1.1 }}
                               >
                                 {skill}
-                              </span>
+                              </motion.span>
                             ))}
-                          </div>
+                          </motion.div>
                         </div>
                       </div>
                     </motion.div>
@@ -488,6 +544,98 @@ export default function HomePage() {
                 ))}
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* Education Section */}
+        <section className="relative section-light py-24 sm:py-32">
+          <div className="container">
+            <motion.div
+              className="mx-auto max-w-2xl text-center mb-16"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <motion.div
+                className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-r from-primary-100 to-secondary-100"
+                whileHover={{ scale: 1.1, rotate: 360 }}
+                transition={{ type: "spring", stiffness: 200, duration: 0.8 }}
+              >
+                <AcademicCapIcon className="h-8 w-8 text-primary-600" />
+              </motion.div>
+              <h2 className="heading-2 bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent">Education</h2>
+              <p className="mt-4 text-lg leading-8 text-gray-600 dark:text-gray-300">
+                Academic foundation in psychology and human behavior
+              </p>
+            </motion.div>
+
+            <motion.div
+              className="mx-auto max-w-3xl"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <div className="relative bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg overflow-hidden">
+                <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl opacity-20 group-hover:opacity-30 group-hover:blur-sm transition-all duration-300" />
+                <div className="relative">
+                  <div className="flex items-center justify-between mb-6">
+                    <div>
+                      <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                        Faculty of Arts
+                      </h3>
+                      <p className="text-lg text-primary-600 dark:text-primary-400">
+                        Alexandria University
+                      </p>
+                    </div>
+                    <motion.div
+                      className="flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-r from-blue-500 to-purple-500"
+                      whileHover={{ scale: 1.1, rotate: 360 }}
+                      transition={{ type: "spring", stiffness: 200 }}
+                    >
+                      <span className="text-2xl text-white">🎓</span>
+                    </motion.div>
+                  </div>
+                  
+                  <div className="space-y-4">
+                    <div>
+                      <h4 className="text-xl font-semibold text-gray-800 dark:text-gray-200">
+                        Bachelor's in Psychology
+                      </h4>
+                      <p className="text-gray-600 dark:text-gray-300">
+                        Specialized in understanding human behavior, cognitive processes, and social psychology
+                      </p>
+                    </div>
+                    
+                    <div className="flex flex-wrap gap-2">
+                      <motion.span
+                        className="inline-flex items-center rounded-full bg-primary-50 dark:bg-gray-700 px-3 py-1 text-sm font-medium text-primary-600 dark:text-primary-400"
+                        whileHover={{ scale: 1.05 }}
+                      >
+                        Psychology
+                      </motion.span>
+                      <motion.span
+                        className="inline-flex items-center rounded-full bg-primary-50 dark:bg-gray-700 px-3 py-1 text-sm font-medium text-primary-600 dark:text-primary-400"
+                        whileHover={{ scale: 1.05 }}
+                      >
+                        Research Methods
+                      </motion.span>
+                      <motion.span
+                        className="inline-flex items-center rounded-full bg-primary-50 dark:bg-gray-700 px-3 py-1 text-sm font-medium text-primary-600 dark:text-primary-400"
+                        whileHover={{ scale: 1.05 }}
+                      >
+                        Social Psychology
+                      </motion.span>
+                      <motion.span
+                        className="inline-flex items-center rounded-full bg-primary-50 dark:bg-gray-700 px-3 py-1 text-sm font-medium text-primary-600 dark:text-primary-400"
+                        whileHover={{ scale: 1.05 }}
+                      >
+                        Cognitive Psychology
+                      </motion.span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </section>
 

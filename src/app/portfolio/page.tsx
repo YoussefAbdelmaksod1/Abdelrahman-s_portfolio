@@ -24,7 +24,45 @@ const brands = [
     description: 'Automotive maintenance and care',
     gradient: 'from-orange-500 to-red-500',
     icon: WrenchScrewdriverIcon,
-    imageCount: 4
+    imageCount: 4,
+    insights: {
+      engagement: '4.2%',
+      reach: '8K',
+      posts: '24',
+      likes: '350+',
+      comments: '45+',
+      shares: '15+'
+    }
+  },
+  {
+    name: 'Muscle Pump',
+    description: 'Fitness supplements and nutrition',
+    gradient: 'from-blue-500 to-cyan-500',
+    icon: FireIcon,
+    imageCount: 4,
+    insights: {
+      engagement: '3.8%',
+      reach: '6K',
+      posts: '18',
+      likes: '280+',
+      comments: '35+',
+      shares: '12+'
+    }
+  },
+  {
+    name: 'Ice Cream Lebnan',
+    description: 'Premium ice cream and desserts',
+    gradient: 'from-purple-500 to-pink-500',
+    icon: CakeIcon,
+    imageCount: 4,
+    insights: {
+      engagement: '4.5%',
+      reach: '7K',
+      posts: '21',
+      likes: '320+',
+      comments: '40+',
+      shares: '18+'
+    }
   },
   {
     name: 'Milva',
@@ -90,13 +128,6 @@ const brands = [
     imageCount: 4
   },
   {
-    name: 'Muscle Pump',
-    description: 'Fitness supplements and nutrition',
-    gradient: 'from-red-500 to-orange-500',
-    icon: FireIcon,
-    imageCount: 4
-  },
-  {
     name: 'Mega Store',
     description: 'Multi-category retail store',
     gradient: 'from-emerald-500 to-green-500',
@@ -153,13 +184,6 @@ const brands = [
     imageCount: 4
   },
   {
-    name: 'Ice Cream Lebnan',
-    description: 'Premium ice cream and desserts',
-    gradient: 'from-blue-400 to-cyan-500',
-    icon: ShoppingBagIcon,
-    imageCount: 4
-  },
-  {
     name: 'Jelaty Lebnan (New Branding)',
     description: 'Artisanal ice cream and desserts',
     gradient: 'from-cyan-500 to-blue-400',
@@ -188,7 +212,7 @@ const container = {
   }
 }
 
-export default function WorkPage() {
+export default function ProjectsPage() {
   const [selectedIndustry, setSelectedIndustry] = useState<string>('all')
 
   const handleIndustryChange = (industry: string) => {
@@ -209,7 +233,7 @@ export default function WorkPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
               >
-                My Work
+                My Projects
               </motion.h1>
               <motion.p 
                 className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300"
@@ -217,7 +241,7 @@ export default function WorkPage() {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.2 }}
               >
-                Explore my portfolio across different industries and content types
+                Explore my portfolio of successful brand collaborations and content strategies
               </motion.p>
             </div>
           </div>
@@ -367,6 +391,84 @@ export default function WorkPage() {
           </div>
         </section>
 
+        {/* Featured Brands Section */}
+        <section className="py-24 bg-white dark:bg-gray-800">
+          <div className="container">
+            <motion.div 
+              className="text-center mb-16"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="heading-2">Featured Brand Collaborations</h2>
+              <p className="mt-4 text-lg leading-8 text-gray-600 dark:text-gray-300">
+                Delivering impactful results through strategic content creation
+              </p>
+            </motion.div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {brands.slice(0, 3).map((brand) => (
+                <motion.div
+                  key={brand.name}
+                  className="relative group bg-gray-50 dark:bg-gray-700/50 rounded-xl p-6 overflow-hidden"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <div className={`absolute -inset-0.5 bg-gradient-to-r ${brand.gradient} rounded-xl opacity-20 group-hover:opacity-30 group-hover:blur-sm transition-all duration-300`} />
+                  <div className="relative">
+                    <div className="flex items-center justify-between mb-4">
+                      <div>
+                        <h3 className="text-xl font-semibold text-gray-900 dark:text-white">{brand.name}</h3>
+                        <p className="text-sm text-gray-500 dark:text-gray-400">{brand.description}</p>
+                      </div>
+                      <div className={`p-3 rounded-xl bg-gradient-to-br ${brand.gradient}`}>
+                        <brand.icon className="h-6 w-6 text-white" />
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-4 mb-6">
+                      <div className="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                        <div className="text-lg font-semibold text-primary-600 dark:text-primary-400">
+                          {brand.insights.engagement}
+                        </div>
+                        <div className="text-xs text-gray-500 dark:text-gray-400">
+                          Engagement Rate
+                        </div>
+                      </div>
+                      <div className="bg-white dark:bg-gray-800 p-3 rounded-lg">
+                        <div className="text-lg font-semibold text-primary-600 dark:text-primary-400">
+                          {brand.insights.reach}
+                        </div>
+                        <div className="text-xs text-gray-500 dark:text-gray-400">
+                          Average Reach
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-3 gap-2 text-center text-sm">
+                      <div>
+                        <div className="font-semibold text-gray-900 dark:text-white">{brand.insights.likes}</div>
+                        <div className="text-xs text-gray-500 dark:text-gray-400">Likes</div>
+                      </div>
+                      <div>
+                        <div className="font-semibold text-gray-900 dark:text-white">{brand.insights.comments}</div>
+                        <div className="text-xs text-gray-500 dark:text-gray-400">Comments</div>
+                      </div>
+                      <div>
+                        <div className="font-semibold text-gray-900 dark:text-white">{brand.insights.shares}</div>
+                        <div className="text-xs text-gray-500 dark:text-gray-400">Shares</div>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Brands Section */}
         <section className="py-24 bg-gray-50 dark:bg-gray-900">
           <div className="container">
@@ -405,6 +507,10 @@ export default function WorkPage() {
                         alt={`Brand ${i + 1}`}
                         fill
                         className="object-contain transition-transform duration-300 group-hover:scale-105"
+                        onError={(e: any) => {
+                          e.currentTarget.src = '/images/placeholder.jpg';
+                          e.currentTarget.classList.add('opacity-50');
+                        }}
                       />
                     </div>
                   </div>
@@ -499,53 +605,88 @@ export default function WorkPage() {
                         <div className="grid grid-cols-2 gap-3">
                           {/* Post Image */}
                           <div className="relative overflow-hidden rounded-xl bg-gradient-to-br from-gray-100 to-gray-50 dark:from-gray-800 dark:to-gray-900 shadow-sm">
-                            <div className="aspect-[3/4] w-full">
+                            <div className="aspect-square w-full">
                               <div className="absolute inset-0 flex items-center justify-center bg-gray-100 dark:bg-gray-800">
                                 <div className="w-8 h-8 border-2 border-primary-500 rounded-full animate-spin border-t-transparent" />
                               </div>
-                              <Image
-                                src={`/posts-images/${brand.name}/${i + 1}.jpg`}
-                                alt={`${brand.name} Post Image ${i + 1}`}
-                                fill
-                                sizes="(max-width: 768px) 100vw, 50vw"
-                                className="object-contain w-full h-full transition-all duration-500 group-hover:scale-105 z-10 relative"
-                                style={{ objectFit: 'contain' }}
-                                priority={i === 0}
-                                quality={75}
-                                onError={(e: any) => {
-                                  console.error(`Error loading image: ${brand.name}/${i + 1}.jpg`);
-                                  e.target.style.display = 'none';
-                                }}
-                              />
+                              <div className="relative w-full h-full">
+                                <Image
+                                  src={`/posts-images/${brand.name}/${i + 1}.jpg`}
+                                  alt={`${brand.name} Post Image ${i + 1}`}
+                                  fill
+                                  sizes="(max-width: 768px) 100vw, 50vw"
+                                  className="object-contain p-2 transition-all duration-500 group-hover:scale-105"
+                                  priority={i === 0}
+                                  quality={75}
+                                  onError={(e: any) => {
+                                    console.log(`Failed to load image: ${brand.name}/${i + 1}.jpg`);
+                                    e.currentTarget.src = '/images/placeholder.jpg';
+                                    e.currentTarget.classList.add('opacity-50');
+                                  }}
+                                />
+                              </div>
                               {/* Image Overlay */}
                               <div className="absolute inset-0 bg-gradient-to-t from-gray-900/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20" />
                             </div>
                           </div>
+
                           {/* Content Image */}
                           <div className="relative overflow-hidden rounded-xl bg-gradient-to-br from-gray-100 to-gray-50 dark:from-gray-800 dark:to-gray-900 shadow-sm">
-                            <div className="aspect-[3/4] w-full">
+                            <div className="aspect-square w-full">
                               <div className="absolute inset-0 flex items-center justify-center bg-gray-100 dark:bg-gray-800">
                                 <div className="w-8 h-8 border-2 border-primary-500 rounded-full animate-spin border-t-transparent" />
                               </div>
-                              <Image
-                                src={`/posts-content-images/${brand.name}/${i + 1}.jpg`}
-                                alt={`${brand.name} Post Content ${i + 1}`}
-                                fill
-                                sizes="(max-width: 768px) 100vw, 50vw"
-                                className="object-contain w-full h-full transition-all duration-500 group-hover:scale-105 z-10 relative"
-                                style={{ objectFit: 'contain' }}
-                                priority={i === 0}
-                                quality={75}
-                                onError={(e: any) => {
-                                  console.error(`Error loading content image: ${brand.name}/${i + 1}.jpg`);
-                                  e.target.style.display = 'none';
-                                }}
-                              />
+                              <div className="relative w-full h-full">
+                                <Image
+                                  src={`/posts-content-images/${brand.name}/${i + 1}.jpg`}
+                                  alt={`${brand.name} Content Image ${i + 1}`}
+                                  fill
+                                  sizes="(max-width: 768px) 100vw, 50vw"
+                                  className="object-contain p-2 transition-all duration-500 group-hover:scale-105"
+                                  priority={i === 0}
+                                  quality={75}
+                                  onError={(e: any) => {
+                                    console.log(`Failed to load content image: ${brand.name}/${i + 1}.jpg`);
+                                    e.currentTarget.src = '/images/placeholder.jpg';
+                                    e.currentTarget.classList.add('opacity-50');
+                                  }}
+                                />
+                              </div>
                               {/* Image Overlay */}
                               <div className="absolute inset-0 bg-gradient-to-t from-gray-900/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20" />
                             </div>
                           </div>
                         </div>
+
+                        {/* Post Insights */}
+                        {brand.insights && (
+                          <div className="mt-4 grid grid-cols-3 gap-2 p-2 bg-gray-50 dark:bg-gray-700/50 rounded-lg">
+                            <div className="text-center">
+                              <div className="text-sm font-semibold text-primary-600 dark:text-primary-400">
+                                {brand.insights.engagement}
+                              </div>
+                              <div className="text-xs text-gray-500 dark:text-gray-400">
+                                Engagement
+                              </div>
+                            </div>
+                            <div className="text-center">
+                              <div className="text-sm font-semibold text-primary-600 dark:text-primary-400">
+                                {brand.insights.reach}
+                              </div>
+                              <div className="text-xs text-gray-500 dark:text-gray-400">
+                                Reach
+                              </div>
+                            </div>
+                            <div className="text-center">
+                              <div className="text-sm font-semibold text-primary-600 dark:text-primary-400">
+                                {brand.insights.likes}
+                              </div>
+                              <div className="text-xs text-gray-500 dark:text-gray-400">
+                                Likes
+                              </div>
+                            </div>
+                          </div>
+                        )}
                       </div>
 
                       {/* Inner Border */}
