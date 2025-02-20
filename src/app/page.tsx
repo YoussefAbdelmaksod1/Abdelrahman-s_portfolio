@@ -446,7 +446,7 @@ export default function HomePage() {
                   },
                   {
                     period: "2022 - 2023",
-                    role: "Co-Founder & Digital Marketer",
+                    role: "Digital Marketer",
                     company: "Well & Fit",
                     location: "Online",
                     type: "Full-time",
