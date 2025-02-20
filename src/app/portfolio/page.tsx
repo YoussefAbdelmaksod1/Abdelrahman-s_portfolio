@@ -516,7 +516,7 @@ export default function ProjectsPage() {
                   variants={fadeInUp}
                   initial="rest"
                   whileHover="hover"
-                  variants={brandHover}
+                  animate="visible"
                   className="group relative"
                 >
                   <div className="absolute -inset-0.5 bg-gradient-to-r from-primary-500/50 to-secondary-500/50 rounded-xl blur opacity-0 group-hover:opacity-100 transition-all duration-500" />
