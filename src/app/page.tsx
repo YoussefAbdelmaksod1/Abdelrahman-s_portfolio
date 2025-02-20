@@ -85,9 +85,9 @@ export default function HomePage() {
       <Navigation />
       <main className="flex-grow">
         {/* Hero Section */}
-        <section className="relative min-h-screen overflow-hidden section-gradient pt-32 lg:pt-40">
-          <div className="container relative z-10">
-            <div className="grid items-center gap-12 lg:grid-cols-2">
+        <section className="relative min-h-screen overflow-hidden section-gradient pt-24 sm:pt-32 lg:pt-40">
+          <div className="container relative z-10 px-4 sm:px-6 lg:px-8">
+            <div className="grid items-center gap-8 sm:gap-12 lg:grid-cols-2">
               <motion.div 
                 className="text-center lg:text-left"
                 initial={{ opacity: 0, x: -50 }}
@@ -95,7 +95,7 @@ export default function HomePage() {
                 transition={{ duration: 0.5 }}
               >
                 <motion.h1 
-                  className="heading-1"
+                  className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2 }}
@@ -108,7 +108,7 @@ export default function HomePage() {
                   </span>
                 </motion.h1>
                 <motion.p 
-                  className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300"
+                  className="mt-4 sm:mt-6 text-base sm:text-lg leading-7 sm:leading-8 text-gray-600 dark:text-gray-300 max-w-xl mx-auto lg:mx-0"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.4 }}
@@ -116,15 +116,15 @@ export default function HomePage() {
                   Passionate content creator specializing in crafting compelling digital experiences that resonate with audiences and drive meaningful engagement.
                 </motion.p>
                 <motion.div 
-                  className="mt-10 flex items-center justify-center gap-x-6 lg:justify-start"
+                  className="mt-8 sm:mt-10 flex items-center justify-center gap-4 sm:gap-x-6 lg:justify-start"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.6 }}
                 >
-                  <Link href="/portfolio" className="btn-primary">
+                  <Link href="/portfolio" className="btn-primary px-6 py-2.5 sm:px-8 sm:py-3 text-sm sm:text-base">
                     View My Projects
                   </Link>
-                  <Link href="/contact" className="btn-outline">
+                  <Link href="/contact" className="btn-outline px-6 py-2.5 sm:px-8 sm:py-3 text-sm sm:text-base">
                     Get in Touch
                   </Link>
                 </motion.div>
@@ -132,7 +132,7 @@ export default function HomePage() {
 
               {/* Profile Image with Animation */}
               <motion.div
-                className="relative mx-auto aspect-square w-full max-w-md"
+                className="relative mx-auto aspect-square w-full max-w-sm sm:max-w-md"
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
@@ -662,58 +662,60 @@ export default function HomePage() {
         </section>
 
         {/* Skills Section */}
-        <section className="relative section-alt py-24 sm:py-32">
-          <div className="container">
+        <section className="relative section-alt py-16 sm:py-24 lg:py-32">
+          <div className="container px-4 sm:px-6 lg:px-8">
             <motion.div
               className="mx-auto max-w-2xl text-center"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="heading-2">Skills & Expertise</h2>
-              <p className="mt-4 text-lg leading-8 text-gray-600 dark:text-gray-300">
+              <h2 className="heading-2 text-3xl sm:text-4xl lg:text-5xl">Skills & Expertise</h2>
+              <p className="mt-4 text-base sm:text-lg leading-7 sm:leading-8 text-gray-600 dark:text-gray-300">
                 A diverse skill set in content creation, marketing, and digital strategy
               </p>
             </motion.div>
 
-            <div className="mt-16 grid gap-12 lg:grid-cols-2">
+            <div className="mt-12 sm:mt-16 grid gap-6 sm:gap-8 lg:gap-12 md:grid-cols-2">
               {[
                 {
                   title: "Content Creation",
                   skills: [
-                    { name: "Creative Writing", icon: "✍️" },
-                    { name: "Design Enhancement", icon: "🎨" },
-                    { name: "Art Direction", icon: "🎭" },
+                    { name: "Content Writing & Copywriting", icon: "✍️" },
                     { name: "Storytelling", icon: "📖" },
-                    { name: "Content Planning", icon: "📋" },
-                    { name: "Brand Voice", icon: "🎯" }
+                    { name: "Scriptwriting", icon: "🎬" },
+                    { name: "Social Media Marketing", icon: "📱" },
+                    { name: "Visual Branding", icon: "🎨" },
+                    { name: "Creative Campaign Development", icon: "🚀" },
+                    { name: "Content Repurposing", icon: "🔄" }
                   ],
                   gradient: "from-rose-400 to-purple-500"
                 },
                 {
-                  title: "Digital Marketing",
+                  title: "Strategic & Analytical",
                   skills: [
-                    { name: "Social Media", icon: "📱" },
-                    { name: "Content Strategy", icon: "🎯" },
-                    { name: "Brand Development", icon: "⭐" },
-                    { name: "Analytics", icon: "📊" },
-                    { name: "Campaign Management", icon: "🚀" },
-                    { name: "Market Research", icon: "🔍" }
+                    { name: "Brand Strategy", icon: "⭐" },
+                    { name: "Market Research", icon: "📊" },
+                    { name: "Insights Analytics", icon: "📈" },
+                    { name: "SWOT Analysis", icon: "🎯" },
+                    { name: "Competitive Analysis", icon: "🔍" },
+                    { name: "Conversion Optimization", icon: "📈" },
+                    { name: "Performance Tracking", icon: "📋" }
                   ],
                   gradient: "from-blue-400 to-cyan-500"
                 }
               ].map((category, index) => (
                 <motion.div
                   key={category.title}
-                  className="relative overflow-hidden bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg"
+                  className="relative overflow-hidden bg-white dark:bg-gray-800 rounded-2xl p-6 sm:p-8 shadow-lg"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.2 }}
                 >
-                  <h3 className={`text-2xl font-bold mb-8 bg-gradient-to-r ${category.gradient} bg-clip-text text-transparent`}>
+                  <h3 className={`text-xl sm:text-2xl font-bold mb-6 sm:mb-8 bg-gradient-to-r ${category.gradient} bg-clip-text text-transparent`}>
                     {category.title}
                   </h3>
-                  <div className="grid gap-4">
+                  <div className="grid gap-3 sm:gap-4">
                     {category.skills.map((skill, skillIndex) => (
                       <motion.div
                         key={skill.name}
@@ -723,9 +725,9 @@ export default function HomePage() {
                         transition={{ delay: skillIndex * 0.1 }}
                         whileHover={{ x: 10 }}
                       >
-                        <div className="flex items-center gap-4 p-4 bg-gray-50 dark:bg-gray-700/50 rounded-xl transition-all duration-300 hover:shadow-md">
-                          <span className="text-2xl">{skill.icon}</span>
-                          <span className="text-lg font-medium text-gray-800 dark:text-gray-200">
+                        <div className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-gray-50 dark:bg-gray-700/50 rounded-xl transition-all duration-300 hover:shadow-md">
+                          <span className="text-xl sm:text-2xl">{skill.icon}</span>
+                          <span className="text-base sm:text-lg font-medium text-gray-800 dark:text-gray-200">
                             {skill.name}
                           </span>
                         </div>
@@ -815,6 +817,76 @@ export default function HomePage() {
           </div>
         </section>
       </main>
+
+      {/* Footer */}
+      <footer className="bg-white dark:bg-gray-900">
+        <div className="container px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+          <div className="grid gap-8 sm:gap-12 md:grid-cols-2 lg:grid-cols-4">
+            <div className="space-y-4 sm:space-y-6">
+              <h3 className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white">About Me</h3>
+              <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300">
+                Content creator and digital storyteller passionate about crafting engaging narratives and building meaningful connections.
+              </p>
+            </div>
+
+            <div className="space-y-4 sm:space-y-6">
+              <h3 className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white">Quick Links</h3>
+              <ul className="space-y-2 sm:space-y-3">
+                {['Portfolio', 'About', 'Services', 'Contact'].map((item) => (
+                  <li key={item}>
+                    <Link 
+                      href={`/${item.toLowerCase()}`}
+                      className="text-sm sm:text-base text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+                    >
+                      {item}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="space-y-4 sm:space-y-6">
+              <h3 className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white">Connect</h3>
+              <div className="flex gap-4">
+                {socialLinks.map((social) => (
+                  <Link
+                    key={social.name}
+                    href={social.url}
+                    className="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <span className="text-xl sm:text-2xl">{social.icon}</span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            <div className="space-y-4 sm:space-y-6">
+              <h3 className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white">Newsletter</h3>
+              <form className="flex flex-col sm:flex-row gap-3">
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  className="flex-1 px-4 py-2 text-sm sm:text-base rounded-lg border border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-primary-500 dark:bg-gray-800"
+                />
+                <button
+                  type="submit"
+                  className="btn-primary px-6 py-2 text-sm sm:text-base whitespace-nowrap"
+                >
+                  Subscribe
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <div className="mt-12 sm:mt-16 pt-8 border-t border-gray-200 dark:border-gray-700">
+            <p className="text-center text-sm sm:text-base text-gray-500 dark:text-gray-400">
+              © {new Date().getFullYear()} Abdelrahman Younes. All rights reserved.
+            </p>
+          </div>
+        </div>
+      </footer>
     </>
   )
 } 
