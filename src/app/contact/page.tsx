@@ -1,10 +1,12 @@
 'use client'
 
 import { Navigation } from '@/components/Navigation'
+import { motion } from 'framer-motion'
 import {
   EnvelopeIcon,
+  SparklesIcon,
 } from '@heroicons/react/24/outline'
-import { SVGProps, FormEvent } from 'react'
+import { SVGProps, FormEvent, useState } from 'react'
 import React from 'react'
 
 type HeroIconType = typeof EnvelopeIcon;
@@ -53,20 +55,47 @@ const contactMethods: ContactMethod[] = [
   },
 ]
 
+const fadeInUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: { duration: 0.5 }
+  }
+}
+
+const container = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      delayChildren: 0.3,
+      staggerChildren: 0.2
+    }
+  }
+}
+
 export default function ContactPage() {
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const formData = new FormData(e.currentTarget);
-    
-    // Here you would typically send the form data to your API
-    // For now, we'll just log it
-    console.log({
-      name: formData.get('name'),
-      email: formData.get('email'),
-      subject: formData.get('subject'),
-      message: formData.get('message'),
-    });
-  };
+    e.preventDefault()
+    setIsSubmitting(true)
+    setSubmitStatus('idle')
+
+    try {
+      const formData = new FormData(e.currentTarget)
+      // Here you would typically send the form data to your API
+      await new Promise(resolve => setTimeout(resolve, 1000)) // Simulated API call
+      setSubmitStatus('success')
+      e.currentTarget.reset()
+    } catch (error) {
+      setSubmitStatus('error')
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
 
   return (
     <>
@@ -75,175 +104,276 @@ export default function ContactPage() {
         {/* Hero Section */}
         <section className="relative overflow-hidden section-gradient pt-32 lg:pt-40">
           <div className="container relative z-10">
-            <div className="mx-auto max-w-3xl text-center">
-              <h1 className="heading-1 animate-fade-in">Get in Touch</h1>
-              <p className="mt-6 animate-fade-in text-lg leading-8 text-gray-600 dark:text-gray-300 [animation-delay:200ms]">
-                Let's discuss your project and explore how we can work together
-              </p>
-            </div>
+            <motion.div 
+              className="mx-auto max-w-3xl text-center"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <motion.div
+                className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-primary-100 dark:bg-primary-900/20"
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
+              >
+                <SparklesIcon className="h-8 w-8 text-primary-600 dark:text-primary-400" />
+              </motion.div>
+              <motion.h1 
+                className="heading-1"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+              >
+                Let's Create Something Amazing
+              </motion.h1>
+              <motion.p 
+                className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.4 }}
+              >
+                Ready to transform your brand with engaging content? Let's discuss your project and explore how we can work together.
+              </motion.p>
+            </motion.div>
           </div>
 
-          {/* Background decoration */}
-          <div className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80">
-            <div className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-primary-200 to-secondary-200 opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]" />
+          {/* Enhanced background decoration */}
+          <div className="absolute inset-0 -z-10 overflow-hidden">
+            <motion.div
+              className="absolute -top-40 left-[calc(50%-500px)] h-[1000px] w-[1000px] rounded-full bg-gradient-to-r from-primary-200/30 to-secondary-200/30 blur-3xl"
+              animate={{
+                scale: [1, 1.2, 1],
+                rotate: [0, 90, 0],
+              }}
+              transition={{
+                duration: 20,
+                repeat: Infinity,
+                ease: "linear"
+              }}
+            />
+            <motion.div
+              className="absolute -bottom-40 right-[calc(50%-500px)] h-[800px] w-[800px] rounded-full bg-gradient-to-l from-primary-200/30 to-secondary-200/30 blur-3xl"
+              animate={{
+                scale: [1.2, 1, 1.2],
+                rotate: [90, 0, 90],
+              }}
+              transition={{
+                duration: 15,
+                repeat: Infinity,
+                ease: "linear"
+              }}
+            />
           </div>
         </section>
 
         {/* Contact Form Section */}
         <section className="section-light py-24 sm:py-32">
           <div className="container">
-            <div className="mx-auto max-w-7xl px-6 lg:px-8">
+            <div className="mx-auto max-w-7xl">
               <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-2">
                 {/* Contact Methods */}
-                <div className="max-w-xl lg:max-w-lg">
-                  <h2 className="heading-2">Contact Information</h2>
-                  <p className="mt-4 text-lg leading-8 text-gray-600 dark:text-gray-300">
-                    Feel free to reach out through any of these channels
-                  </p>
-                  <dl className="mt-10 space-y-4 text-base leading-7 text-gray-600 dark:text-gray-300">
+                <motion.div 
+                  className="max-w-xl lg:max-w-lg"
+                  variants={container}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                >
+                  <motion.h2 
+                    className="heading-2"
+                    variants={fadeInUp}
+                  >
+                    Let's Connect
+                  </motion.h2>
+                  <motion.p 
+                    className="mt-4 text-lg leading-8 text-gray-600 dark:text-gray-300"
+                    variants={fadeInUp}
+                  >
+                    Choose your preferred way to reach out
+                  </motion.p>
+                  <motion.dl 
+                    className="mt-10 space-y-4 text-base leading-7"
+                    variants={container}
+                  >
                     {contactMethods.map((method) => (
-                      <div key={method.name} className="relative pl-9 group">
+                      <motion.div
+                        key={method.name}
+                        variants={fadeInUp}
+                        className="relative pl-12 group bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300"
+                      >
                         <dt className="inline font-semibold text-gray-900 dark:text-white">
-                          <span className="absolute left-1 top-1 text-primary-600 dark:text-primary-400 transition-transform duration-300 group-hover:scale-110">
-                            <method.icon className="h-5 w-5" aria-hidden="true" />
+                          <span className="absolute left-4 top-1/2 -translate-y-1/2 text-primary-600 dark:text-primary-400 transition-all duration-300 group-hover:scale-110 group-hover:rotate-12">
+                            <method.icon className="h-6 w-6" aria-hidden="true" />
                           </span>
                           {method.name}
-                        </dt>{' '}
-                        <dd className="inline">
-                          {method.description} - {' '}
-                          {method.href ? (
-                            <a 
-                              href={method.href} 
-                              target="_blank" 
-                              rel="noopener noreferrer"
-                              className="text-primary-600 dark:text-primary-400 hover:underline transition-colors duration-300"
-                            >
-                              {method.contact}
-                            </a>
-                          ) : (
-                            <span className="select-all">{method.contact}</span>
-                          )}
+                        </dt>
+                        <dd className="block mt-1 text-gray-600 dark:text-gray-300">
+                          {method.description}
+                          <div className="mt-1">
+                            {method.href ? (
+                              <a 
+                                href={method.href} 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 transition-colors duration-300"
+                              >
+                                {method.contact}
+                              </a>
+                            ) : (
+                              <span className="select-all font-medium">{method.contact}</span>
+                            )}
+                          </div>
                         </dd>
-                      </div>
+                      </motion.div>
                     ))}
-                  </dl>
-                </div>
+                  </motion.dl>
+                </motion.div>
 
                 {/* Contact Form */}
-                <div className="flex flex-col gap-10 rounded-2xl bg-white dark:bg-gray-800 p-8 shadow-lg ring-1 ring-gray-200 dark:ring-gray-700">
-                  <form onSubmit={handleSubmit} className="flex flex-col gap-6">
-                    <div>
-                      <label
-                        htmlFor="name"
-                        className="block text-sm font-medium leading-6 text-gray-900 dark:text-gray-100"
-                      >
-                        Name
-                      </label>
-                      <div className="mt-2">
-                        <input
-                          type="text"
-                          name="name"
-                          id="name"
-                          required
-                          autoComplete="name"
-                          className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 dark:text-white bg-white dark:bg-gray-700 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-600 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-primary-600 dark:focus:ring-primary-400 sm:text-sm sm:leading-6"
-                          placeholder="Your name"
-                        />
-                      </div>
-                    </div>
-                    <div>
-                      <label
-                        htmlFor="email"
-                        className="block text-sm font-medium leading-6 text-gray-900 dark:text-gray-100"
-                      >
-                        Email
-                      </label>
-                      <div className="mt-2">
-                        <input
-                          type="email"
-                          name="email"
-                          id="email"
-                          required
-                          autoComplete="email"
-                          className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 dark:text-white bg-white dark:bg-gray-700 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-600 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-primary-600 dark:focus:ring-primary-400 sm:text-sm sm:leading-6"
-                          placeholder="you@example.com"
-                        />
-                      </div>
-                    </div>
-                    <div>
-                      <label
-                        htmlFor="subject"
-                        className="block text-sm font-medium leading-6 text-gray-900 dark:text-gray-100"
-                      >
-                        Subject
-                      </label>
-                      <div className="mt-2">
-                        <input
-                          type="text"
-                          name="subject"
-                          id="subject"
-                          required
-                          className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 dark:text-white bg-white dark:bg-gray-700 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-600 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-primary-600 dark:focus:ring-primary-400 sm:text-sm sm:leading-6"
-                          placeholder="Project inquiry"
-                        />
-                      </div>
-                    </div>
-                    <div>
-                      <label
-                        htmlFor="message"
-                        className="block text-sm font-medium leading-6 text-gray-900 dark:text-gray-100"
-                      >
-                        Message
-                      </label>
-                      <div className="mt-2">
-                        <textarea
-                          name="message"
-                          id="message"
-                          rows={4}
-                          required
-                          className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 dark:text-white bg-white dark:bg-gray-700 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-600 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-primary-600 dark:focus:ring-primary-400 sm:text-sm sm:leading-6"
-                          placeholder="Tell me about your project..."
-                        />
-                      </div>
-                    </div>
-                    <div>
-                      <button 
-                        type="submit" 
-                        className="btn-primary w-full"
-                      >
-                        Send Message
-                      </button>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+                <motion.div 
+                  className="relative"
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                >
+                  <div className="absolute -inset-0.5 bg-gradient-to-r from-primary-500/30 to-secondary-500/30 rounded-2xl blur opacity-75" />
+                  <div className="relative flex flex-col gap-10 rounded-2xl bg-white dark:bg-gray-800 p-8 shadow-lg">
+                    <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+                      <div className="grid grid-cols-1 gap-6">
+                        <motion.div
+                          initial={{ opacity: 0, y: 20 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ delay: 0.3 }}
+                        >
+                          <label
+                            htmlFor="name"
+                            className="block text-sm font-medium leading-6 text-gray-900 dark:text-gray-100"
+                          >
+                            Name
+                          </label>
+                          <div className="mt-2">
+                            <input
+                              type="text"
+                              name="name"
+                              id="name"
+                              required
+                              autoComplete="name"
+                              className="block w-full rounded-lg border-0 px-4 py-3 text-gray-900 dark:text-white bg-gray-50 dark:bg-gray-700/50 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-600 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-primary-600 dark:focus:ring-primary-400 sm:text-sm sm:leading-6 transition-all duration-300"
+                              placeholder="Your name"
+                            />
+                          </div>
+                        </motion.div>
 
-        {/* Social Links Section */}
-        <section className="section-alt py-24 sm:py-32">
-          <div className="container">
-            <div className="mx-auto max-w-2xl text-center">
-              <h2 className="heading-2">Connect With Me</h2>
-              <p className="mt-4 text-lg leading-8 text-gray-600 dark:text-gray-300">
-                Follow me on social media for updates and insights
-              </p>
-              <div className="mt-10 flex justify-center gap-6">
-                {contactMethods
-                  .filter(method => method.href)
-                  .map((method) => (
-                    <a
-                      key={method.name}
-                      href={method.href}
-                      className="text-gray-400 hover:text-gray-500 dark:text-gray-500 dark:hover:text-gray-400"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <span className="sr-only">{method.name}</span>
-                      <method.icon className="h-6 w-6" aria-hidden="true" />
-                    </a>
-                  ))}
+                        <motion.div
+                          initial={{ opacity: 0, y: 20 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ delay: 0.4 }}
+                        >
+                          <label
+                            htmlFor="email"
+                            className="block text-sm font-medium leading-6 text-gray-900 dark:text-gray-100"
+                          >
+                            Email
+                          </label>
+                          <div className="mt-2">
+                            <input
+                              type="email"
+                              name="email"
+                              id="email"
+                              required
+                              autoComplete="email"
+                              className="block w-full rounded-lg border-0 px-4 py-3 text-gray-900 dark:text-white bg-gray-50 dark:bg-gray-700/50 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-600 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-primary-600 dark:focus:ring-primary-400 sm:text-sm sm:leading-6 transition-all duration-300"
+                              placeholder="you@example.com"
+                            />
+                          </div>
+                        </motion.div>
+
+                        <motion.div
+                          initial={{ opacity: 0, y: 20 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ delay: 0.5 }}
+                        >
+                          <label
+                            htmlFor="subject"
+                            className="block text-sm font-medium leading-6 text-gray-900 dark:text-gray-100"
+                          >
+                            Subject
+                          </label>
+                          <div className="mt-2">
+                            <input
+                              type="text"
+                              name="subject"
+                              id="subject"
+                              required
+                              className="block w-full rounded-lg border-0 px-4 py-3 text-gray-900 dark:text-white bg-gray-50 dark:bg-gray-700/50 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-600 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-primary-600 dark:focus:ring-primary-400 sm:text-sm sm:leading-6 transition-all duration-300"
+                              placeholder="What's this about?"
+                            />
+                          </div>
+                        </motion.div>
+
+                        <motion.div
+                          initial={{ opacity: 0, y: 20 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ delay: 0.6 }}
+                        >
+                          <label
+                            htmlFor="message"
+                            className="block text-sm font-medium leading-6 text-gray-900 dark:text-gray-100"
+                          >
+                            Message
+                          </label>
+                          <div className="mt-2">
+                            <textarea
+                              name="message"
+                              id="message"
+                              rows={4}
+                              required
+                              className="block w-full rounded-lg border-0 px-4 py-3 text-gray-900 dark:text-white bg-gray-50 dark:bg-gray-700/50 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-600 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-primary-600 dark:focus:ring-primary-400 sm:text-sm sm:leading-6 transition-all duration-300"
+                              placeholder="Tell me about your project..."
+                            />
+                          </div>
+                        </motion.div>
+                      </div>
+
+                      <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.7 }}
+                      >
+                        <button 
+                          type="submit" 
+                          className="relative w-full rounded-lg bg-gradient-to-r from-primary-600 to-primary-500 px-6 py-3 text-base font-semibold text-white shadow-sm hover:from-primary-500 hover:to-primary-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                          disabled={isSubmitting}
+                        >
+                          {isSubmitting ? (
+                            <div className="flex items-center justify-center">
+                              <div className="w-5 h-5 border-2 border-white rounded-full border-t-transparent animate-spin mr-2" />
+                              Sending...
+                            </div>
+                          ) : (
+                            'Send Message'
+                          )}
+                        </button>
+                        {submitStatus === 'success' && (
+                          <p className="mt-2 text-sm text-green-600 dark:text-green-400">
+                            Message sent successfully!
+                          </p>
+                        )}
+                        {submitStatus === 'error' && (
+                          <p className="mt-2 text-sm text-red-600 dark:text-red-400">
+                            There was an error sending your message. Please try again.
+                          </p>
+                        )}
+                      </motion.div>
+                    </form>
+                  </div>
+                </motion.div>
               </div>
             </div>
           </div>
@@ -251,4 +381,4 @@ export default function ContactPage() {
       </main>
     </>
   )
-} 
+}

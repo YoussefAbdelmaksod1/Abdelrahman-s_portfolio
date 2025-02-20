@@ -210,19 +210,41 @@ export default function HomePage() {
               className="mx-auto max-w-2xl text-center"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
             >
               <motion.div
                 className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-primary-100"
-                whileHover={{ scale: 1.1, rotate: 180 }}
-                transition={{ type: "spring", stiffness: 200 }}
+                whileHover={{ 
+                  scale: 1.1, 
+                  rotate: 180,
+                  transition: { 
+                    type: "spring", 
+                    stiffness: 200,
+                    damping: 10
+                  }
+                }}
               >
                 <SparklesIcon className="h-8 w-8 text-primary-600" />
               </motion.div>
-              <h2 className="heading-2">Why Choose Me?</h2>
-              <p className="mt-4 text-lg leading-8 text-gray-600 dark:text-gray-300">
+              <motion.h2 
+                className="heading-2"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
+                Why Choose Me?
+              </motion.h2>
+              <motion.p 
+                className="mt-4 text-lg leading-8 text-gray-600 dark:text-gray-300"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+              >
                 Elevate your brand with strategic content creation and marketing expertise
-              </p>
+              </motion.p>
             </motion.div>
 
             <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">

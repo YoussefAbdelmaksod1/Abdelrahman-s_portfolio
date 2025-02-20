@@ -1,29 +1,28 @@
-# Abdelrahman Younes Portfolio Website
+# Abdelrahman Younes Portfolio
 
-A modern, responsive portfolio website built with Next.js, TypeScript, and Tailwind CSS.
+A modern, responsive portfolio website built with Next.js, TailwindCSS, and Framer Motion.
 
 ## Features
 
-- 🚀 Built with Next.js 14 and TypeScript
-- 🎨 Styled with Tailwind CSS
-- 📱 Fully responsive design
-- ⚡ Optimized performance
-- 🔍 SEO friendly
-- 🎭 Smooth animations with Framer Motion
-- 📝 Modern, clean UI
+- Modern and responsive design
+- Smooth animations with Framer Motion
+- Dark mode support
+- Optimized images and assets
+- SEO friendly
+- Fast loading times
 
 ## Getting Started
 
 ### Prerequisites
 
-- Node.js 18.17 or later
-- npm or yarn package manager
+- Node.js 14.x or later
+- npm or yarn
 
 ### Installation
 
 1. Clone the repository:
 ```bash
-git clone <repository-url>
+git clone https://github.com/yourusername/abdelrahman-younes-portfolio.git
 ```
 
 2. Install dependencies:
@@ -33,53 +32,89 @@ npm install
 yarn install
 ```
 
-3. Run the development server:
+3. Create a `.env` file based on `.env.example`:
+```bash
+cp .env.example .env
+```
+
+4. Run the development server:
 ```bash
 npm run dev
 # or
 yarn dev
 ```
 
-4. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Deployment
+
+### Build for Production
+
+1. Create a production build:
+```bash
+npm run build
+# or
+yarn build
+```
+
+2. Test the production build locally:
+```bash
+npm run start
+# or
+yarn start
+```
+
+### Deployment Platforms
+
+#### Vercel (Recommended)
+
+1. Install Vercel CLI:
+```bash
+npm i -g vercel
+```
+
+2. Deploy:
+```bash
+vercel
+```
+
+#### Netlify
+
+1. Install Netlify CLI:
+```bash
+npm i -g netlify-cli
+```
+
+2. Deploy:
+```bash
+netlify deploy
+```
 
 ## Project Structure
 
 ```
-src/
-├── app/                 # Next.js 14 app directory
-├── components/          # Reusable components
-├── lib/                 # Utility functions and constants
-└── types/              # TypeScript type definitions
+├── public/          # Static assets
+├── src/
+│   ├── app/        # App router pages
+│   ├── components/ # React components
+│   └── styles/     # Global styles
+├── next.config.js  # Next.js configuration
+└── tailwind.config.js # Tailwind configuration
 ```
 
-## Built With
+## Environment Variables
 
-- [Next.js](https://nextjs.org/) - React framework
-- [TypeScript](https://www.typescriptlang.org/) - Type safety
-- [Tailwind CSS](https://tailwindcss.com/) - Styling
-- [Framer Motion](https://www.framer.com/motion/) - Animations
-- [Hero Icons](https://heroicons.com/) - Icons
+Create a `.env` file in the root directory with the following variables:
 
-## Development
-
-The project uses:
-- ESLint for code linting
-- Prettier for code formatting
-- TypeScript for type checking
-
-To run type checking:
-```bash
-npm run type-check
-# or
-yarn type-check
+```env
+NEXT_PUBLIC_SITE_URL=your_site_url
 ```
 
-To run linting:
-```bash
-npm run lint
-# or
-yarn lint
-```
+## Performance Optimization
+
+- Images are optimized using Next.js Image component
+- CSS is purged in production
+- JavaScript is minified and split into chunks
+- Console logs are removed in production
+- Assets are cached and served from CDN
 
 ## License
 

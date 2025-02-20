@@ -11,7 +11,7 @@ import clsx from 'clsx'
 const navigation = [
   { name: 'Home', href: '/' },
   { name: 'About', href: '/about' },
-  { name: 'Work', href: '/portfolio' },
+  { name: 'Projects', href: '/portfolio' },
   { name: 'Contact', href: '/contact' },
 ]
 
