@@ -183,14 +183,88 @@ export default function AboutPage() {
                 viewport={{ once: true }}
               >
                 <h2 className="heading-2 mb-8 text-center">My Journey</h2>
-                <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg">
-                  <div className="space-y-6 text-lg text-gray-600 dark:text-gray-300">
-                    <p>
-                      My journey in digital marketing began with a passion for storytelling and a curiosity about how brands connect with their audiences. Starting as a content creator, I quickly realized the power of strategic digital marketing in transforming businesses.
-                    </p>
-                    <p>
-                      Over the past three years, I've had the privilege of working with diverse industries, from car care to fitness supplements and beyond. Each project has been an opportunity to craft unique narratives and drive meaningful results.
-                    </p>
+                <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg relative overflow-hidden">
+                  <div className="absolute -inset-0.5 bg-gradient-to-r from-primary-500/20 to-secondary-500/20 rounded-2xl blur opacity-50" />
+                  <div className="relative">
+                    <div className="grid md:grid-cols-2 gap-8">
+                      <div className="space-y-6">
+                        <div className="relative">
+                          <div className="flex items-center gap-4 mb-4">
+                            <div className="p-3 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500">
+                              <SparklesIcon className="h-6 w-6 text-white" />
+                            </div>
+                            <h3 className="text-xl font-semibold text-gray-900 dark:text-white">The Beginning</h3>
+                          </div>
+                          <p className="text-gray-600 dark:text-gray-300">
+                            My journey in digital marketing began with a passion for storytelling and a curiosity about how brands connect with their audiences. Starting as a content creator, I quickly realized the power of strategic digital marketing in transforming businesses.
+                          </p>
+                        </div>
+                        <div className="relative">
+                          <div className="flex items-center gap-4 mb-4">
+                            <div className="p-3 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500">
+                              <RocketLaunchIcon className="h-6 w-6 text-white" />
+                            </div>
+                            <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Growth & Learning</h3>
+                          </div>
+                          <p className="text-gray-600 dark:text-gray-300">
+                            Through continuous learning and hands-on experience, I've developed expertise in content strategy, social media management, and digital marketing. Each project has been an opportunity to refine my skills and deliver better results.
+                          </p>
+                        </div>
+                      </div>
+                      <div className="space-y-6">
+                        <div className="relative">
+                          <div className="flex items-center gap-4 mb-4">
+                            <div className="p-3 rounded-xl bg-gradient-to-br from-orange-500 to-red-500">
+                              <HeartIcon className="h-6 w-6 text-white" />
+                            </div>
+                            <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Industry Experience</h3>
+                          </div>
+                          <p className="text-gray-600 dark:text-gray-300">
+                            Over the past three years, I've had the privilege of working with diverse industries, from car care to fitness supplements and beyond. Each project has been an opportunity to craft unique narratives and drive meaningful results.
+                          </p>
+                        </div>
+                        <div className="relative">
+                          <div className="flex items-center gap-4 mb-4">
+                            <div className="p-3 rounded-xl bg-gradient-to-br from-green-500 to-teal-500">
+                              <LightBulbIcon className="h-6 w-6 text-white" />
+                            </div>
+                            <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Current Focus</h3>
+                          </div>
+                          <p className="text-gray-600 dark:text-gray-300">
+                            Today, I focus on creating data-driven content strategies that help brands build authentic connections with their audience while achieving measurable business results.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Key Milestones */}
+                    <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
+                      <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-6">Key Milestones</h3>
+                      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        {[
+                          { label: "Brands Served", value: "20+" },
+                          { label: "Projects Completed", value: "50+" },
+                          { label: "Content Pieces", value: "500+" },
+                          { label: "Avg. Engagement", value: "5.8%" }
+                        ].map((milestone, index) => (
+                          <motion.div
+                            key={milestone.label}
+                            className="bg-gray-50 dark:bg-gray-700/50 p-4 rounded-xl text-center"
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: index * 0.1 }}
+                          >
+                            <div className="text-2xl font-bold bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent">
+                              {milestone.value}
+                            </div>
+                            <div className="text-sm text-gray-600 dark:text-gray-400">
+                              {milestone.label}
+                            </div>
+                          </motion.div>
+                        ))}
+                      </div>
+                    </div>
                   </div>
                 </div>
               </motion.div>
